@@ -28,9 +28,11 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
     <div class="mx-auto max-w-7xl px-[5vw] py-5">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">
-          <div class="flex flex-1 items-center">
-            <img class="h-8 w-auto" :src="personalWebLogo" alt="Your Company" />
-          </div>
+          <h1 class="flex flex-1 items-center">
+            <RouterLink to='/'>
+              <img class="h-8 w-auto" :src="personalWebLogo" alt="Your Company" />
+            </RouterLink>
+          </h1>
           <!-- Mobile menu button-->
           <DisclosureButton class="w-10 h-10 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden" >
             <span class="absolute -inset-0.5" />

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessui/vue'
 import personalWebLogo from '@/assets/personalWebLogo.svg'
 import { RouterLink } from 'vue-router';
-import { SunIcon,MoonIcon } from '@heroicons/vue/24/solid';
+import { SunIcon,MoonIcon,ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/solid';
 import { useRoute } from 'vue-router'
 const route = useRoute();
 
@@ -14,7 +14,6 @@ const navigation = [
   { name: 'About', path: '/about'},
   { name: 'Projects', path: '/projects'},
   { name: 'Contact', path: '/contact'},
-  { name: 'Blog', path: '/blog'},
 ]
 
 const closeMenu = ref("bg-gray-500 w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-[-0.5rem] before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-[-0.5rem] after:duration-300");
@@ -41,7 +40,12 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
           </DisclosureButton>
           <div class="hidden sm:block flex-1">
             <div class="flex space-x-4">
-              <RouterLink v-for="item in navigation" :key="item.name" :to="item.path" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']">{{ item.name }}</RouterLink>
+              <RouterLink v-for="item in navigation" :key="item.name" :to="item.path" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']">{{ item.name }}
+              </RouterLink>
+              <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
+                <span>Blog</span>
+                <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon>
+              </a>
             </div>
           </div>
           <div class="flex flex-1 gap-3 items-center justify-end">
@@ -80,7 +84,13 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
 
     <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pb-3 pt-2 shadow-lg">
-        <DisclosureButton class="w-full" :aria-current="item.current ? 'page' : undefined" v-for="item in navigation" :key="item.name" as="a" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']"><RouterLink :to="item.path">{{ item.name }}</RouterLink></DisclosureButton>
+        <DisclosureButton class="w-full" :aria-current="item.path===route.fullPath ? 'page' : undefined" v-for="item in navigation" :key="item.name" as="a" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']">
+          <RouterLink :to="item.path">{{ item.name }}</RouterLink>
+        </DisclosureButton>
+        <a href="https://raylanraylan.github.io/blog/" target="_blank" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium flex gap-1 items-center">
+          <span>Blog</span>
+          <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon>
+        </a>
       </div>
     </DisclosurePanel>
   </Disclosure>

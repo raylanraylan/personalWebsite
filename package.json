@@ -14,7 +14,7 @@
     "@headlessui/vue": "^1.7.22",
     "@heroicons/vue": "^2.1.5",
     "vue": "^3.4.29",
-    "vue-i18n": "^9.14.0",
+    "vue-i18n": "^10.0.0",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {

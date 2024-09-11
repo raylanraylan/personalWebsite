@@ -4,13 +4,17 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessu
 import personalWebLogo from '@/assets/personalWebLogo.svg'
 import { RouterLink } from 'vue-router';
 import { SunIcon,MoonIcon } from '@heroicons/vue/24/solid';
+import { useRoute } from 'vue-router'
+const route = useRoute();
+
 const toggleLanguage = ref(false)
 const toggleColorMode = ref(true)
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'About', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', path: '/'},
+  { name: 'About', path: '/about'},
+  { name: 'Projects', path: '/projects'},
+  { name: 'Contact', path: '/contact'},
+  { name: 'Blog', path: '/blog'},
 ]
 
 const closeMenu = ref("bg-gray-500 w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-[-0.5rem] before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-[-0.5rem] after:duration-300");
@@ -35,7 +39,7 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
           </DisclosureButton>
           <div class="hidden sm:block flex-1">
             <div class="flex space-x-4">
-              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+              <RouterLink v-for="item in navigation" :key="item.name" :to="item.path" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']">{{ item.name }}</RouterLink>
             </div>
           </div>
           <div class="flex flex-1 gap-3 items-center justify-end">
@@ -74,7 +78,7 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
 
     <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pb-3 pt-2 shadow-lg">
-        <DisclosureButton class="w-full" :aria-current="item.current ? 'page' : undefined" v-for="item in navigation" :key="item.name" as="a" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']"><RouterLink :to="item.href">{{ item.name }}</RouterLink></DisclosureButton>
+        <DisclosureButton class="w-full" :aria-current="item.current ? 'page' : undefined" v-for="item in navigation" :key="item.name" as="a" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']"><RouterLink :to="item.path">{{ item.name }}</RouterLink></DisclosureButton>
       </div>
     </DisclosurePanel>
   </Disclosure>

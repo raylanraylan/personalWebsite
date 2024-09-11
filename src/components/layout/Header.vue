@@ -21,14 +21,14 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
 
 <template>
   <Disclosure as="nav" class="dark:bg-gray-800" v-slot="{ open }">    
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-[5vw] py-5">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">
           <div class="flex flex-1 items-center">
             <img class="h-8 w-auto" :src="personalWebLogo" alt="Your Company" />
           </div>
           <!-- Mobile menu button-->
-          <DisclosureButton class="w-10 h-10 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden" >
+          <DisclosureButton class="w-10 h-10 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden" >
             <span class="absolute -inset-0.5" />
             <span class="sr-only">Open main menu</span>
             <span :class="open?openMenu:closeMenu"></span>
@@ -41,14 +41,18 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
           <div class="flex flex-1 gap-3 items-center justify-end">
             <Switch
               v-model="toggleLanguage"
-              :class="toggleLanguage ? 'bg-gray-900' : 'bg-gray-500'"
-              class="relative inline-flex h-8 w-14 items-center rounded-full"
+              :class="toggleLanguage ? 'bg-gray-500' : 'bg-gray-500'"
+              class="relative inline-flex h-8 w-14 items-center rounded-full shadow-[inset_2px_2px_3px_0_rgba(0,0,0,.3)]"
             >
               <span class="sr-only">Enable notifications</span>
               <span
-                :class="toggleLanguage ? 'translate-x-6' : 'translate-x-1'"
-                class="inline-block h-4 w-4 transform rounded-full bg-white transition"
+                :class="toggleLanguage ? 'translate-x-8' : 'translate-x-1'"
+                class="h-5 w-5 transform rounded-full bg-white transition absolute top-1.5 shadow-lg"
               />
+              <div class="mx-auto">
+                <span class="text-sm mr-.5" :class="toggleLanguage?'text-white':'text-gray-500'">TW</span>
+                <span class="text-sm" :class="toggleLanguage?'text-gray-500':'text-white'">EN</span>
+              </div>
             </Switch>
             <Switch
               v-model="toggleColorMode"

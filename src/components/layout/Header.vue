@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessui/vue'
 import personalWebLogo from '@/assets/personalWebLogo.svg'
 import { RouterLink } from 'vue-router';
-import { Switch } from '@headlessui/vue'
-
+import { SunIcon,MoonIcon } from '@heroicons/vue/24/solid';
 const toggleLanguage = ref(false)
 const toggleColorMode = ref(true)
 const navigation = [
@@ -32,7 +31,7 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
           <DisclosureButton class="w-10 h-10 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden" >
             <span class="absolute -inset-0.5" />
             <span class="sr-only">Open main menu</span>
-            <span :class="[open?openMenu:closeMenu]"></span>
+            <span :class="open?openMenu:closeMenu"></span>
           </DisclosureButton>
           <div class="hidden sm:block flex-1">
             <div class="flex space-x-4">
@@ -43,7 +42,7 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
             <Switch
               v-model="toggleLanguage"
               :class="toggleLanguage ? 'bg-gray-900' : 'bg-gray-500'"
-              class="relative inline-flex h-6 w-11 items-center rounded-full"
+              class="relative inline-flex h-8 w-14 items-center rounded-full"
             >
               <span class="sr-only">Enable notifications</span>
               <span
@@ -53,14 +52,16 @@ const openMenu = ref("transparent w-full h-1 relative before:content-[''] before
             </Switch>
             <Switch
               v-model="toggleColorMode"
-              :class="toggleColorMode ? 'bg-gray-900' : 'bg-gray-500'"
-              class="relative inline-flex h-6 w-11 items-center rounded-full"
+              :class="toggleColorMode ? 'bg-amber-400 shadow-[inset_2px_2px_3px_0_rgba(200,70,40,0.7)]' : 'bg-gray-800 drop-shadow-lg'"
+              class="relative inline-flex justify-center h-8 w-8 items-center rounded-full"
             >
               <span class="sr-only">Enable notifications</span>
-              <span
-                :class="toggleColorMode ? 'translate-x-6' : 'translate-x-1'"
-                class="inline-block h-4 w-4 transform rounded-full bg-white transition"
-              />
+              <SunIcon v-show="toggleColorMode" class="size-5 text-grey-500"></SunIcon>
+              <MoonIcon v-show="!toggleColorMode" class="size-4 text-white"></MoonIcon>
+              <!-- <span
+                :class="toggleColorMode?'':'shadow-md'"
+                class="inline-block h-4 w-9 mx-auto transform rounded-full bg-white transition"
+              /> -->
             </Switch>
           </div>
         </div>

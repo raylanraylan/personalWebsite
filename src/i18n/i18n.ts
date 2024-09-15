@@ -6,8 +6,8 @@ type MessageSchema = typeof zh
 
 const i18n = createI18n<[MessageSchema], 'zh-TW' | 'en-US'>({
   legacy: false, // 要把 legacy 設為 false，才可以使用 Composition API
-  locale: 'zh-TW',
-  fallbackLocale: 'zh-TW',
+  locale: 'en-US',
+  fallbackLocale: 'en-US',
   globalInjection: true,
   messages: {
     'zh-TW': zh,

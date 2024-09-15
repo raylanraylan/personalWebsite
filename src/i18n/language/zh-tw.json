@@ -1,3 +1,8 @@
 {
-  "home": "首頁"
+  "home_link": "首頁",
+  "about_link": "關於我",
+  "projects_link": "作品",
+  "contact_link": "聯絡我",
+  "blog_link": "部落格",
+  "title": "Ray的個人網頁"
 }

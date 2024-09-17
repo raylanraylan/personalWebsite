@@ -4,6 +4,31 @@
   "projects_link": "作品",
   "contact_link": "聯絡我",
   "blog_link": "部落格",
-  "title": "Ray的個人網頁",
-  "greeting": "嗨，歡迎！"
+  "title": "Ray's Creations",
+  "home": {
+    "greeting": "嗨，歡迎！",
+    "introduce": "我是Ray，始終努力成為更好的創作者。"
+  },
+  "project": {
+    "blog": "部落格",
+    "book-horizon": "書海藍圖",
+    "frontend-technologies": "前端技術",
+    "iTHelp-keep-sharing-award-2012": "IT邦幫忙鐵人賽2023"
+  },
+  "contact": {
+    "content:": "內容",
+    "email": "電子郵件",
+    "name": "您的名字"
+  },
+  "about": {
+    "education": "學歷",
+    "position": "前端工程師",
+    "skills": "技能",
+    "work-experience": "工作經驗",
+    "company": {
+      "legend": "連訊科技服務股份有限公司"
+    },
+    "school": "國立臺南藝術大學",
+    "school-department": "動畫藝術與影像美學研究所"
+  }
 }

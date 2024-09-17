@@ -4,6 +4,31 @@
   "projects_link": "Projects",
   "contact_link": "Contact",
   "blog_link": "Blog",
-  "title": "Ray'page",
-  "greeting": "Hi, and welcome!"
+  "title": "Ray's Creations",
+  "home": {
+    "greeting": "Hi, and welcome!",
+    "introduce": "I'm Ray, always striving to become a better creator."
+  },
+  "about": {
+    "position": "Front-End Developer",
+    "skills": "SKILLS",
+    "work-experience": "WORK EXPERIENCE",
+    "education": "EDUCATION",
+    "company": {
+      "legend": "LEGEND INFOSHARING CO.,LTD."
+    },
+    "school": "Tainan National University of the Arts",
+    "school-department": "Graduate Institute of Animation and Film Art"
+  },
+  "project": {
+    "blog": "Blog",
+    "book-horizon": "Book Horizon",
+    "iTHelp-keep-sharing-award-2012": "ITHelp Keep Sharing Award 2023",
+    "frontend-technologies": "Frontend Technologies"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "E-mail",
+    "content:": "Content"
+  }
 }

@@ -30,5 +30,8 @@
     },
     "school": "國立臺南藝術大學",
     "school-department": "動畫藝術與影像美學研究所"
+  },
+  "footer": {
+    "copyright": "版權所有"
   }
 }

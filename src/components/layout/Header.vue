@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref,watch,onMounted,defineEmits } from 'vue'
+import { ref,watch,onMounted,defineEmits, watchEffect } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessui/vue'
 import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
 import { RouterLink } from 'vue-router';
@@ -12,7 +12,8 @@ const emit = defineEmits<{
 }>()
 const route = useRoute();
 
-const toggleLanguage = ref(false) , isToggleDark = ref(false)
+const toggleLanguage = ref<Boolean>(false);
+const isToggleDark = ref<Boolean>(false);
 const navigation = [
   { i18nName: 'home_link', path: '/'},
   { i18nName: 'about_link', path: '/about'},
@@ -24,25 +25,25 @@ const closeMenu = ref("bg-gray-500 w-full h-1 relative before:content-[''] befor
 const openMenu = ref("transparent w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-0 before:rotate-[135deg] before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-0 after:duration-300 after:rotate-45")
 
 function toggleColor(){
+  isToggleDark.value = !isToggleDark.value
   localStorage.setItem('darkMode', String(isToggleDark.value))
   updateTheme()
 }
 
-const updateTheme = () => {
+const updateTheme = () => {    
   if (isToggleDark.value) {
     document.documentElement.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
   }
 }
-
-watch(isToggleDark, updateTheme)
-
 const getHeaderSize = ref<HTMLDivElement>();
 
+
 onMounted(() => {
-  isToggleDark.value = localStorage.getItem('darkMode') === 'true'
+  isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme()
+  
   emit('heightSize',getHeaderSize.value?.clientHeight)
 })
 
@@ -93,7 +94,7 @@ onMounted(() => {
               </div>
             </Switch>
             <Switch
-              v-model="isToggleDark"
+              :value="isToggleDark"
               :class="isToggleDark ?'bg-gray-100 drop-shadow-lg': 'bg-amber-400 shadow-[inset_2px_2px_3px_0_rgba(200,70,40,0.7)]'"
               class="relative inline-flex justify-center h-8 w-8 items-center rounded-full"
               @click="toggleColor"

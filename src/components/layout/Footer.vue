@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const thisYear:number = new Date().getFullYear()
+const thisYear:number = new Date().getFullYear();
 </script>
-<template>
-<p class="text-center">{{$t("footer.copyright")}} &copy; {{thisYear}} Ray</p>
 
+<template>
+  <p class="text-center text-sm dark:text-amber-400">{{$t("footer.copyright")}} &copy; {{thisYear}} Ray</p>
 </template>

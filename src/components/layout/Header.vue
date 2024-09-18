@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref,watch,onMounted } from 'vue'
+import { ref,watch,onMounted,defineEmits } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessui/vue'
 import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
 import { RouterLink } from 'vue-router';
@@ -7,6 +7,9 @@ import { SunIcon,MoonIcon,ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/so
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 const { locale }  = useI18n({ useScope: 'global' })
+const emit = defineEmits<{
+  heightSize:[size:number]
+}>()
 const route = useRoute();
 
 const toggleLanguage = ref(false) , isToggleDark = ref(false)
@@ -35,16 +38,19 @@ const updateTheme = () => {
 
 watch(isToggleDark, updateTheme)
 
+const getHeaderSize = ref<HTMLDivElement>();
+
 onMounted(() => {
   isToggleDark.value = localStorage.getItem('darkMode') === 'true'
   updateTheme()
+  emit('heightSize',getHeaderSize.value?.clientHeight)
 })
 
 </script>
 
 <template>
-  <Disclosure as="nav" v-slot="{ open }">    
-    <div class="mx-auto max-w-7xl px-[5vw] py-5">
+  <Disclosure as="nav"  v-slot="{ open }">    
+    <div class="mx-auto max-w-7xl px-[5vw] py-5" ref="getHeaderSize">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">
           <h1 class="flex flex-1 items-center">

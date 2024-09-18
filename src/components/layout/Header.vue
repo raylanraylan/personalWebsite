@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Disclosure as="nav" class="fixed top-0 w-full" v-slot="{ open }">    
+  <Disclosure as="nav" v-slot="{ open }">    
     <div class="mx-auto max-w-7xl px-[5vw] py-5">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">

@@ -33,5 +33,10 @@
   },
   "footer": {
     "copyright": "版權所有"
+  },
+  "notFound": {
+    "goBackHome": "回首頁",
+    "title": "找不到頁面",
+    "content": "抱歉，我們找不到您搜尋的頁面"
   }
 }

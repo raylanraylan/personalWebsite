@@ -3,6 +3,8 @@
 </script>
 
 <template>
-<h2>Hi, and welcome!  </h2>
-<p>I'm Ray, always striving to become a better creator.</p>
+  <div class="px-[5vw] pt-10 pb-20">
+    <h2 class="text-[4rem] sm:text-[8rem] leading-tight">{{$t("home.greeting")}}</h2>
+    <p>{{$t("home.introduce")}}</p>
+  </div>
 </template>

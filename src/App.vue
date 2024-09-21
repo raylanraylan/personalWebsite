@@ -14,9 +14,9 @@ function getSize(size:number){
 
 <template>
   <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full" >
-    <Header @heightSize = "getSize"/>
+    <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
   </header>
-  <main class="px-[5vw] pt-10 pb-20" :style="[{'margin-top':heightSize}]">
+  <main class="px-[5vw] pt-10 pb-20 max-w-7xl mx-auto" :style="[{'margin-top':heightSize}]">
     <RouterView />
   </main>
   <footer v-if="route.name !== 'notFound'">

@@ -29,7 +29,31 @@
       "legend": "連訊科技服務股份有限公司"
     },
     "school": "國立臺南藝術大學",
-    "school-department": "動畫藝術與影像美學研究所"
+    "school-department": "動畫藝術與影像美學研究所",
+    "skill": {
+      "programmingFrameworks": "前端程式語言與框架",
+      "structureStyling": "網頁結構與樣式設計",
+      "versionControl": "版本控制"
+    },
+    "work": {
+      "legend": {
+        "formProcess": {
+          "basicStructure": "使用Vue.js建置基本架構，使用Vue Router管理路由、並透過Pinia管理資料以及部分欄位的計算。",
+          "title": "表單流程網站",
+          "webpagePlanning": "製作簡易網頁規劃與流程"
+        },
+        "questionAndAnswer": {
+          "webpagePlanning": "製作簡易網頁規劃與流程。",
+          "title": "題目問答網站",
+          "intuitiveQA": "使用Vue.js建立直觀問答流程。"
+        },
+        "microBusiness": {
+          "title": "微商後台介面",
+          "identityManagement": "新增對應身份管理頁面、權限控管設定，並串接對應的API。",
+          "userExperience": "維護客戶需求功能，改善系統的使用體驗。"
+        }
+      }
+    }
   },
   "footer": {
     "copyright": "版權所有"

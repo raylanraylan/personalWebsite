@@ -56,7 +56,6 @@ onMounted(() => {
         <div class="w-full inset-y-0 left-0 flex">
           <h1 class="flex flex-1 items-center">
             <RouterLink to='/'>
-              <!-- <img class="h-8 w-auto" :src="personalWebLogo" alt="logo" /> -->
               <PersonalWebLogo class="h-8 w-auto" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
             </RouterLink>
           </h1>
@@ -68,9 +67,9 @@ onMounted(() => {
           </DisclosureButton>
           <div class="hidden sm:block flex-1">
             <div class="flex space-x-4 whitespace-nowrap">
-              <RouterLink v-for="item in navigation" :key="item.i18nName" :to="item.path" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']">{{ $t(item.i18nName) }}
+              <RouterLink v-for="item in navigation" :key="item.i18nName" :to="item.path" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white', 'rounded-md px-3 py-2 text-sm font-medium']">{{ $t(item.i18nName) }}
               </RouterLink>
-              <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
+              <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
                 <span>{{ $t('blog_link') }}</span>
                 <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon>
               </a>
@@ -102,7 +101,6 @@ onMounted(() => {
               <span class="sr-only">Enable notifications</span>
               <MoonIcon v-show="isToggleDark" class="size-4 text-grey-500"></MoonIcon>
               <SunIcon v-show="!isToggleDark" class="size-5 text-grey-500"></SunIcon>
-
             </Switch>
           </div>
         </div>
@@ -111,10 +109,12 @@ onMounted(() => {
 
     <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pb-3 pt-2 shadow-lg">
-        <DisclosureButton class="w-full" :aria-current="item.path===route.fullPath ? 'page' : undefined" v-for="item in navigation" :key="item.i18nName" as="a" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']">
-          <RouterLink :to="item.path">{{ $t(item.i18nName) }}</RouterLink>
-        </DisclosureButton>
-        <a href="https://raylanraylan.github.io/blog/" target="_blank" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium flex gap-1 items-center">
+        <RouterLink :to="item.path"  v-for="item in navigation" :key="item.i18nName">
+          <DisclosureButton class="w-full" :aria-current="item.path===route.fullPath ? 'page' : undefined" as="a" :class="[item.path===route.fullPath ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900' : 'text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white', 'block rounded-md px-3 py-2 text-base font-medium']">
+            {{ $t(item.i18nName) }}
+          </DisclosureButton>
+        </RouterLink>
+        <a href="https://raylanraylan.github.io/blog/" target="_blank" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium flex gap-1 items-center dark:text-white">
           <span>{{ $t('blog_link') }}</span>
           <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon>
         </a>

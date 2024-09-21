@@ -18,7 +18,31 @@
       "legend": "LEGEND INFOSHARING CO.,LTD."
     },
     "school": "Tainan National University of the Arts",
-    "school-department": "Graduate Institute of Animation and Film Art"
+    "school-department": "Graduate Institute of Animation and Film Art",
+    "skill": {
+      "programmingFrameworks": "Frontend Programming & Frameworks",
+      "versionControl": "Version Control",
+      "structureStyling": "Frontend Structure & Styling"
+    },
+    "work": {
+      "legend": {
+        "microBusiness": {
+          "title": "Micro Business Backend Interface",
+          "identityManagement": "Added a corresponding identity management page and permission control settings, and integrated the related APIs.",
+          "userExperience": "Maintained customer-required functionalities and improved the system's user experience."
+        },
+        "formProcess": {
+          "title": "Form Process Website",
+          "basicStructure": "Form Process Website",
+          "webpagePlanning": "Created simple webpage planning and flow."
+        },
+        "questionAndAnswer": {
+          "title": "Question and Answer Website",
+          "intuitiveQA": "Built an intuitive Q&A flow using Vue.js.",
+          "webpagePlanning": "Created simple webpage planning and flow."
+        }
+      }
+    }
   },
   "project": {
     "blog": "Blog",

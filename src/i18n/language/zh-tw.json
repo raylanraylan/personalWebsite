@@ -16,9 +16,12 @@
     "iTHelp-keep-sharing-award-2012": "IT邦幫忙鐵人賽2023"
   },
   "contact": {
-    "content:": "內容",
     "email": "電子郵件",
-    "name": "您的名字"
+    "name": "您的名字",
+    "content": "內容",
+    "title": "與我聊聊",
+    "description": "如果您有任何問題，歡迎透過填寫下面的表單填寫您的任何想法。",
+    "sendForm": "寄出留言"
   },
   "about": {
     "education": "學歷",

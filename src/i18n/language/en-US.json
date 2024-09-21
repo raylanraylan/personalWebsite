@@ -53,7 +53,10 @@
   "contact": {
     "name": "Name",
     "email": "E-mail",
-    "content:": "Content"
+    "content": "Content",
+    "title": "Chat with me",
+    "description": "Should you have any questions, feel free to share your thoughts by filling out the form below.",
+    "sendForm": "Submit"
   },
   "footer": {
     "copyright": "Copyright"

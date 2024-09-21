@@ -39,38 +39,40 @@
     </section>
     <section>
       <h2 class="text-2xl sm:text-4xl mb-3 font-bold">{{ $t("about.work-experience") }}</h2>
-      <div class="flex flex-col gap-3">
-        <div>
-          <h3 class="flex text-xl gap-3">
-            <span>{{ $t("about.company.legend") }}</span>
-            <span>2024/5 - 2024/9</span>
-          </h3>
-          <h4 class="text-xs">{{ $t("about.position") }}</h4>
-        </div>
-        <div>
+      <ul class="divide-y">
+        <li class="space-y-3">
           <div>
-            <h5 class="text-lg font-medium">{{ $t("about.work.legend.microBusiness.title") }}</h5>
-            <ul class="list-disc ml-5 text-sm">
-              <li>{{ $t("about.work.legend.microBusiness.identityManagement") }}</li>
-              <li>{{ $t("about.work.legend.microBusiness.userExperience") }}</li>
-            </ul>
+            <h3 class="flex text-xl gap-3">
+              <span>{{ $t("about.company.legend") }}</span>
+              <span>2024/5 - 2024/9</span>
+            </h3>
+            <h4 class="text-xs">{{ $t("about.position") }}</h4>
           </div>
           <div>
-            <h5 class="text-lg font-medium">{{ $t("about.work.legend.formProcess.title") }}</h5>
-            <ul class="list-disc ml-5 text-sm">
-              <li>{{ $t("about.work.legend.formProcess.webpagePlanning") }}</li>
-              <li>{{ $t("about.work.legend.formProcess.basicStructure") }}</li>
-            </ul>
+            <div>
+              <h5 class="text-lg font-medium">{{ $t("about.work.legend.microBusiness.title") }}</h5>
+              <ul class="list-disc ml-5 text-sm">
+                <li>{{ $t("about.work.legend.microBusiness.identityManagement") }}</li>
+                <li>{{ $t("about.work.legend.microBusiness.userExperience") }}</li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="text-lg font-medium">{{ $t("about.work.legend.formProcess.title") }}</h5>
+              <ul class="list-disc ml-5 text-sm">
+                <li>{{ $t("about.work.legend.formProcess.webpagePlanning") }}</li>
+                <li>{{ $t("about.work.legend.formProcess.basicStructure") }}</li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="text-lg font-medium">{{ $t("about.work.legend.questionAndAnswer.title") }}</h5>
+              <ul class="list-disc ml-5 text-sm">
+                <li>{{ $t("about.work.legend.questionAndAnswer.intuitiveQA") }}</li>
+                <li>{{ $t("about.work.legend.questionAndAnswer.webpagePlanning") }}</li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h5 class="text-lg font-medium">{{ $t("about.work.legend.questionAndAnswer.title") }}</h5>
-            <ul class="list-disc ml-5 text-sm">
-              <li>{{ $t("about.work.legend.questionAndAnswer.intuitiveQA") }}</li>
-              <li>{{ $t("about.work.legend.questionAndAnswer.webpagePlanning") }}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </section>
     <section>
       <h2 class="text-2xl sm:text-4xl mb-3 font-bold">{{ $t("about.education") }}</h2>

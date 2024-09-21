@@ -7,7 +7,7 @@
     <hr/>
     <section>
       <h2 class="text-2xl sm:text-4xl mb-3 font-bold">{{ $t("about.skills") }}</h2>
-      <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
         <div>
           <h3 class="text-xl font-medium">{{ $t("about.skill.structureStyling") }}</h3>
           <ul class="text-sm">

@@ -45,10 +45,20 @@
     }
   },
   "project": {
-    "blog": "Blog",
+    "blog": {
+      "title": "Blog",
+      "description": "A place to write personal reflections or records."
+    },
     "book-horizon": "Book Horizon",
-    "iTHelp-keep-sharing-award-2012": "ITHelp Keep Sharing Award 2023",
-    "frontend-technologies": "Frontend Technologies"
+    "iTHelp-keep-sharing-award-2023": {
+      "title": "ITHelp Keep Sharing Award 2023",
+      "description": "Write a 30-day series of technical articles on the topic of JavaScript objects and the DOM."
+    },
+    "personalPage": {
+      "title": "Personal Website",
+      "description": "Showcase my background and experience, as well as the projects I have previously worked on."
+    },
+    "view": "view"
   },
   "contact": {
     "name": "Name",

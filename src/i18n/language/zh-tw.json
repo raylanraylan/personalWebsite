@@ -10,10 +10,20 @@
     "introduce": "我是Ray，始終努力成為更好的創作者。"
   },
   "project": {
-    "blog": "部落格",
+    "blog": {
+      "title": "部落格",
+      "description": "撰寫個人感想或紀錄的地方"
+    },
     "book-horizon": "書海藍圖",
-    "frontend-technologies": "前端技術",
-    "iTHelp-keep-sharing-award-2012": "IT邦幫忙鐵人賽2023"
+    "iTHelp-keep-sharing-award-2023": {
+      "title": "IT邦幫忙鐵人賽2023",
+      "description": "撰寫三十天的技術文章。主題為Javascript物件與DOM。"
+    },
+    "personalPage": {
+      "title": "個人網頁",
+      "description": "集合我的背景與經歷，並展示曾經製作的作品。"
+    },
+    "view": "前往觀看"
   },
   "contact": {
     "email": "電子郵件",

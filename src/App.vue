@@ -40,7 +40,7 @@ function hideLoading(){
   const showFullProcess = setTimeout(()=>{
     isLoading.value = false;
     clearTime(showFullProcess);
-  },3000)
+  },2000)
 }
 
 function clearTime(time:number){
@@ -51,6 +51,7 @@ onMounted(()=>{
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme();
   hideLoading();
+
 })
 
 </script>
@@ -60,7 +61,7 @@ onMounted(()=>{
   <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
     <div>
       <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
-      <p class="text-white text-4xl text-center">{{ process }}%</p>
+      <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
     </div>
   </div>
   <div v-else>

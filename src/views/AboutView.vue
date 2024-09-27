@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-10 flex-col dark:text-white">
     <section>
-      <h2 class="sm:text-4xl">Ray</h2>
+      <h2 class="text-2xl sm:text-4xl">Ray</h2>
       <p>{{ $t("about.position") }}</p>
     </section>
     <hr/>

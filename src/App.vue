@@ -34,37 +34,32 @@ function hideLoading(){
   const hideTime = setTimeout(()=>{
     process.value = 100;
     clearInterval(runProcess)
-    clearTime(hideTime);
+    clearTimeout(hideTime);
   },1000)
 
   const showFullProcess = setTimeout(()=>{
     isLoading.value = false;
-    clearTime(showFullProcess);
+    clearTimeout(showFullProcess);
   },2000)
-}
-
-function clearTime(time:number){
-  clearTimeout(time)
 }
 
 onMounted(()=>{
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme();
   hideLoading();
-
 })
-
 </script>
 
 <template>
-  <!-- v-if="isLoading" -->
-  <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
-    <div>
-      <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
-      <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
+  <Transition :duration="1000">
+    <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center" >
+      <div>
+        <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
+        <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
+      </div>
     </div>
-  </div>
-  <div v-else>
+  </Transition>
+  <div v-if="!isLoading">
     <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full" >
       <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
     </header>
@@ -76,3 +71,15 @@ onMounted(()=>{
     </footer>
   </div>
 </template>
+
+<style>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

@@ -8,13 +8,13 @@ const projects = ref([
     link:'',
     github:'https://github.com/raylanraylan/personalWebsite',
   },
-  {
-    i18nTitle:'project.blog.title',
-    skill:'',
-    description:'project.blog.description',
-    link:'https://raylanraylan.github.io/blog/',
-    github:'',
-  },
+  // {
+  //   i18nTitle:'project.blog.title',
+  //   skill:'',
+  //   description:'project.blog.description',
+  //   link:'https://raylanraylan.github.io/blog/',
+  //   github:'',
+  // },
   {
     i18nTitle:'project.iTHelp-keep-sharing-award-2023.title',
     skill:'',

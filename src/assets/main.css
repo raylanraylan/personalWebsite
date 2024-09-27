@@ -10,7 +10,7 @@
     box-sizing: inherit;
   }
 
-  body,header,main,loading {
+  body,header,main,.loading {
     @apply bg-zinc-50 dark:bg-gray-800
   }
   

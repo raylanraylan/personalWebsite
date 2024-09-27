@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUpdate, onMounted, ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 import { RouterView } from 'vue-router'
 import { useRoute } from 'vue-router';
 import Header from '@/components/layout/Header.vue'
@@ -35,15 +35,15 @@ function hideLoading(){
     process.value = 100;
     clearInterval(runProcess)
     clearTimeout(hideTime);
-  },1000)
+  },500)
 
   const showFullProcess = setTimeout(()=>{
     isLoading.value = false;
     clearTimeout(showFullProcess);
-  },2000)
+  },1000)
 }
 
-onMounted(()=>{
+onBeforeMount(()=>{
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme();
   hideLoading();
@@ -63,7 +63,7 @@ onMounted(()=>{
     <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full" >
       <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
     </header>
-    <main class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]">
+    <main class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]" :isLoading="isLoading">
       <RouterView />
     </main>
     <footer v-if="route.name !== 'notFound'">

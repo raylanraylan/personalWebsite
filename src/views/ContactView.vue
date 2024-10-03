@@ -8,7 +8,8 @@ import {
   DialogTitle,
 } from '@headlessui/vue'
 
-const isOpen = ref(true)
+const isOpen = ref(false);
+const isSuccessSubmit = ref(false);
 
 function closeModal() {
   isOpen.value = false
@@ -18,6 +19,11 @@ function openModal() {
 }
 
 async function submitData(e) {
+  const data = new FormData(e.target);        
+  for (const value of data.values()) {
+   if (value==='') return; 
+  }
+  
   try {
     const data = new FormData(e.target);        
     const res = await fetch('https://formspree.io/f/mblrnwjb', {
@@ -27,6 +33,7 @@ async function submitData(e) {
     });
     if (res.ok) {
       e.target.reset();
+      isSuccessSubmit.value = true;
       openModal();
     }
     // } else {
@@ -40,7 +47,8 @@ async function submitData(e) {
     // }
   } catch (err) {
     console.error(err);
-    // status.value = err.message;
+    isSuccessSubmit.value = false;
+    openModal();
   }
 }
 </script>
@@ -72,29 +80,54 @@ async function submitData(e) {
             leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95"
           >
-            <DialogPanel
+            <DialogPanel v-if="isSuccessSubmit"
               class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                 as="h3"
                 class="text-lg font-medium leading-6 text-gray-900"
               >
-                Payment successful
+              {{ $t('contact.submitResult.success.title') }}
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent you
-                  an email with all of the details of your order.
+                  {{ $t('contact.submitResult.success.content') }}
                 </p>
               </div>
 
-              <div class="mt-4">
+              <div class="mt-4 flex justify-center">
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
                   @click="closeModal"
                 >
-                  Got it, thanks!
+                {{ $t('contact.submitResult.close')}}
+                </button>
+              </div>
+            </DialogPanel>
+            <DialogPanel v-else
+              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+            >
+              <DialogTitle
+                as="h3"
+                class="text-lg font-medium leading-6 text-gray-900"
+              >
+                {{ $t('contact.submitResult.fail.title') }}
+              </DialogTitle>
+              <div class="mt-2">
+                <p class="text-sm text-gray-500">
+                  {{ $t('contact.submitResult.fail.content') }}
+                </p>
+                <a href="mailto:startup9043672@gmail.com" class="mt-2 text-lg text-center block">startup9043672@gmail.com</a>
+              </div>
+
+              <div class="mt-4 flex justify-center">
+                <button
+                  type="button"
+                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
+                  @click="closeModal"
+                >
+                  {{ $t('contact.submitResult.close')}}
                 </button>
               </div>
             </DialogPanel>
@@ -131,6 +164,6 @@ async function submitData(e) {
       </div>
     </div>
 
-    <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 dark:bg-white dark:text-gray-900" type="submit">{{ $t("contact.sendForm") }}</button>
+    <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 dark:bg-white dark:text-gray-900" type="submit" :disable="isOpen">{{ $t("contact.sendForm") }}</button>
   </form>
 </template>

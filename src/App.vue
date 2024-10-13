@@ -22,48 +22,48 @@ function getSize(size:number){
 const isLoading = ref(true);
 const isToggleDark = ref(false)
 
-// const updateTheme = () => {    
-//   if (isToggleDark.value) {
-//     document.documentElement.classList.add('dark')
-//   } else {
-//     document.documentElement.classList.remove('dark')
-//   }
-// }
+const updateTheme = () => {    
+  if (isToggleDark.value) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+}
 
-// function hideLoading(){
-//   const hideTime = setTimeout(()=>{
-//     process.value = 100;
-//     clearInterval(runProcess)
-//     clearTimeout(hideTime);
-//   },500)
+function hideLoading(){
+  const hideTime = setTimeout(()=>{
+    process.value = 100;
+    clearInterval(runProcess)
+    clearTimeout(hideTime);
+  },500)
 
-//   const showFullProcess = setTimeout(()=>{
-//     isLoading.value = false;
-//     clearTimeout(showFullProcess);
-//   },1000)
-// }
+  const showFullProcess = setTimeout(()=>{
+    isLoading.value = false;
+    clearTimeout(showFullProcess);
+  },1000)
+}
 
 onBeforeMount(()=>{
-  // isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
-  // updateTheme();
-  // hideLoading();
+  isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
+  updateTheme();
+  hideLoading();
 })
 </script>
 
 <template>
-  <!-- <Transition :duration="1000">
-    <div class="w-full h-[100vh] loading flex flex-col justify-center" >
+  <Transition :duration="1000">
+    <div v-show="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center" >
       <div>
         <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
         <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
       </div>
     </div>
-  </Transition> -->
-  <div>
+  </Transition>
+  <div v-show="!isLoading">
     <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full" >
       <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
     </header>
-    <main class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]">
+    <main class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]" :isLoading="isLoading">
       <RouterView />
     </main>
     <footer v-if="route.name !== 'notFound'">

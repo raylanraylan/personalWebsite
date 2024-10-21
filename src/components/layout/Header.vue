@@ -39,7 +39,6 @@ const updateTheme = () => {
 }
 const getHeaderSize = ref<HTMLDivElement>();
 
-
 onMounted(() => {
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme()

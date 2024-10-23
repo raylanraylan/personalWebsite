@@ -33,8 +33,6 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build:github
-        env:
-          VITE_BASE: ${{ secrets.VITE_BASE }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

@@ -20,6 +20,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      env:
+        VITE_BASE:true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,6 +35,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build:github
+        environment: github
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

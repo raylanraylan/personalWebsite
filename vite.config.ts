@@ -5,7 +5,6 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig (({ command, mode }) =>{
-  const env = loadEnv(mode, process.cwd(),'')
   return{  
     plugins: [
       vue(),
@@ -15,9 +14,6 @@ export default defineConfig (({ command, mode }) =>{
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
-    base:env.VITE_BASE,
-    define: {
-      __VITE_BASE__: JSON.stringify(env.VITE_BASE),
-  },
+    base:process.env.VITE_BASE,
   }
 })

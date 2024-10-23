@@ -8,6 +8,8 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
+    "build:github": "vite build --mode github",
+    "build:aws": "vite build --mode aws",
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {

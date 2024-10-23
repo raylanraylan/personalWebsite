@@ -15,6 +15,9 @@ export default defineConfig (({ command, mode }) =>{
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
-    base:env.VITE_BASE
+    base:env.VITE_BASE,
+    define: {
+      __VITE_BASE__: JSON.stringify(env.VITE_BASE),
+  },
   }
 })

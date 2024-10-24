@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref,watch,onMounted,defineEmits, watchEffect } from 'vue'
+import { ref,watch,onMounted,defineEmits, watchEffect,onBeforeMount, nextTick } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessui/vue'
 import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
 import { RouterLink } from 'vue-router';
@@ -38,19 +38,25 @@ const updateTheme = () => {
   }
 }
 const getHeaderSize = ref<HTMLDivElement>();
+async function setMainMargin(){
+  await nextTick(()=>{
+    emit('heightSize',getHeaderSize.value?.clientHeight)
+    console.log(getHeaderSize.value?.getBoundingClientRect());
+  });
+}
 
 onMounted(() => {
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme()
-  
-  emit('heightSize',getHeaderSize.value?.clientHeight)
+  const observer = new ResizeObserver(setMainMargin)
+  observer.observe(getHeaderSize.value)
 })
 
 </script>
 
 <template>
   <Disclosure as="nav"  v-slot="{ open }">    
-    <div ref="getHeaderSize">
+    <div ref="getHeaderSize" class="getHeaderSize" :key="Math.random()">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">
           <h1 class="flex flex-1 items-center">

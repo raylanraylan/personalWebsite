@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from 'vue'
+import { onBeforeMount, onMounted, ref,nextTick } from 'vue'
 import { RouterView } from 'vue-router'
 import { useRoute } from 'vue-router';
 import Header from '@/components/layout/Header.vue'
@@ -15,8 +15,9 @@ const runProcess = setInterval(()=>{
   }
 },100)
 
-function getSize(size:number){
+async function getSize(size:number){
   heightSize.value = size+'px';  
+  await nextTick()
 }
 
 const isLoading = ref(true);

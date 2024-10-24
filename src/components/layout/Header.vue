@@ -38,25 +38,34 @@ const updateTheme = () => {
   }
 }
 const getHeaderSize = ref<HTMLDivElement>();
-async function setMainMargin(){
-  await nextTick(()=>{
-    emit('heightSize',getHeaderSize.value?.clientHeight)
-    console.log(getHeaderSize.value?.getBoundingClientRect());
-  });
+
+
+
+function connect(element){
+  const o = new ResizeObserver((entries)=>{
+  const rect = entries[0].contentRect
+  if (rect) {
+    emit('heightSize',rect.height)
+  }
+  })
+  o.observe(element)
 }
 
-onMounted(() => {
+watch(getHeaderSize,(el) => {
+    if (el) connect(el);
+  }
+)
+
+onMounted(async() => {
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme()
-  const observer = new ResizeObserver(setMainMargin)
-  observer.observe(getHeaderSize.value)
 })
 
 </script>
 
 <template>
   <Disclosure as="nav"  v-slot="{ open }">    
-    <div ref="getHeaderSize" class="getHeaderSize" :key="Math.random()">
+    <div ref="getHeaderSize" class="getHeaderSize">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">
           <h1 class="flex flex-1 items-center">

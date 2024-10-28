@@ -11,5 +11,8 @@
   "compilerOptions": {
     "allowJs": true,
     "noEmitOnError":true,
+  },
+  "vueCompilerOptions": {
+    "plugins": ["@vue-macros/volar/template-ref"]
   }
 }

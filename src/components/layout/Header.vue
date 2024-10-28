@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref,watch,onMounted,defineEmits, watchEffect,onBeforeMount, nextTick } from 'vue'
+import { ref,watch,onMounted,defineEmits, nextTick,useTemplateRef, onBeforeUnmount } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch} from '@headlessui/vue'
 import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
 import { RouterLink } from 'vue-router';
@@ -37,35 +37,40 @@ const updateTheme = () => {
     document.documentElement.classList.remove('dark')
   }
 }
-const getHeaderSize = ref<HTMLDivElement>();
 
 
+const headerContainer = ref<HTMLDivElement>()
 
-function connect(element){
-  const o = new ResizeObserver((entries)=>{
+const observer = ref()
+function getHeightValue(element:HTMLDivElement){
+  observer.value = new ResizeObserver((entries)=>{
   const rect = entries[0].contentRect
   if (rect) {
     emit('heightSize',rect.height)
   }
   })
-  o.observe(element)
+  observer.value.observe(element)
 }
 
-watch(getHeaderSize,(el) => {
-    if (el) connect(el);
+watch(headerContainer,(element) => {
+    if (element) getHeightValue(element);
   }
 )
 
-onMounted(async() => {
+onMounted(() => {
   isToggleDark.value = localStorage.getItem('darkMode')==="true"?true:false
   updateTheme()
+})
+
+onBeforeUnmount(()=>{
+  observer.value.unobserve();
 })
 
 </script>
 
 <template>
   <Disclosure as="nav"  v-slot="{ open }">    
-    <div ref="getHeaderSize" class="getHeaderSize">
+    <div ref="headerContainer" class="getHeaderSize">
       <div class="relative flex h-16 items-center justify-between">
         <div class="w-full inset-y-0 left-0 flex">
           <h1 class="flex flex-1 items-center">

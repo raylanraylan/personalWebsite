@@ -36,12 +36,12 @@ function hideLoading(){
     process.value = 100;
     clearInterval(runProcess)
     clearTimeout(hideTime);
-  },500)
+  },300)
 
   const showFullProcess = setTimeout(()=>{
     isLoading.value = false;
     clearTimeout(showFullProcess);
-  },1000)
+  },700)
 }
 
 onBeforeMount(()=>{
@@ -52,21 +52,21 @@ onBeforeMount(()=>{
 </script>
 
 <template>
-  <Transition :duration="1000">
-    <div v-show="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center" >
-      <div>
-        <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
-        <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
-      </div>
+  <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
+    <div>
+      <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
+      <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
     </div>
-  </Transition>
-  <div v-show="!isLoading">
+  </div>
+  <div v-if="!isLoading">
     <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full" >
       <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
     </header>
-    <main class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]" :isLoading="isLoading">
-      <RouterView />
-    </main>
+    <Transition appear name="slide-fade">
+      <main v-if="!isLoading" :key="Math.random()" class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]" :isLoading="isLoading">
+        <RouterView />
+      </main>
+    </Transition>
     <footer v-if="route.name !== 'notFound'">
       <Footer/>
     </footer>
@@ -74,13 +74,28 @@ onBeforeMount(()=>{
 </template>
 
 <style>
-.v-enter-active,
-.v-leave-active {
+.loading-enter-active,
+.loading-leave-active {
   transition: opacity 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.loading-enter-from,
+.loading-leave-to {
   opacity: 0;
 }
+
+.slide-fade-enter-active {
+  transition: all 1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
 </style>

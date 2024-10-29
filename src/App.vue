@@ -39,8 +39,8 @@ function hideLoading(){
   },300)
 
   const showFullProcess = setTimeout(()=>{
-    isLoading.value = false;
     clearTimeout(showFullProcess);
+    isLoading.value = false;
   },700)
 }
 

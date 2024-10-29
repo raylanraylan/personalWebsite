@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # personalWebsite
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -32,6 +31,3 @@ npm run dev
 ```sh
 npm run build
 ```
-=======
-# personalWebsite
->>>>>>> 1a9d61e7b0d000bc7dc90c71bb40114b4335b3ef

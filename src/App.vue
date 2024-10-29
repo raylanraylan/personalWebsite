@@ -36,12 +36,12 @@ function hideLoading(){
     process.value = 100;
     clearInterval(runProcess)
     clearTimeout(hideTime);
-  },300)
+  },700)
 
   const showFullProcess = setTimeout(()=>{
     clearTimeout(showFullProcess);
     isLoading.value = false;
-  },700)
+  },300)
 }
 
 onBeforeMount(()=>{
@@ -52,11 +52,11 @@ onBeforeMount(()=>{
 </script>
 
 <template>
-  <div v-show="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
+  <!-- <div v-show="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
     <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
     <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
-  </div>
-  <div v-if="!isLoading">
+  </div> -->
+  <div>
     <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full" >
       <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
     </header>

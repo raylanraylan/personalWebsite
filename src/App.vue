@@ -43,7 +43,7 @@ function hideLoading(){
   const showFullProcess = setTimeout(()=>{
     isShowContent.value = true;
     clearTimeout(showFullProcess);
-  },300)
+  },500)
 }
 
 onBeforeMount(()=>{
@@ -63,7 +63,7 @@ onBeforeMount(()=>{
       <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize = "getSize"/>
     </header>
     <Transition appear name="slide-fade">
-      <main v-show="isShowContent" :key="Math.random()" class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]" :isLoading="isLoading">
+      <main v-show="isShowContent" class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{'margin-top':heightSize}]" :isLoading="isLoading">
         <RouterView />
       </main>
     </Transition>

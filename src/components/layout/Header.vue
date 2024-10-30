@@ -75,7 +75,7 @@ onBeforeUnmount(()=>{
         <div class="w-full inset-y-0 left-0 flex">
           <h1 class="flex flex-1 items-center">
             <RouterLink to='/'>
-              <PersonalWebLogo class="h-8 w-auto" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'"/>
+              <PersonalWebLogo class="h-8 w-auto" :lineColor="isToggleDark?'#fcfcfc':'#1f2937'" aria-label="logo"/>
             </RouterLink>
           </h1>
           <!-- Mobile menu button-->

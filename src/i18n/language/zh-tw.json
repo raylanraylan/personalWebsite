@@ -86,5 +86,19 @@
     "goBackHome": "回首頁",
     "title": "找不到頁面",
     "content": "抱歉，我們找不到您搜尋的頁面"
+  },
+  "starMap": {
+    "aries": "牡羊座",
+    "taurus": "金牛座",
+    "gemini": "雙子座",
+    "cancer": "巨蟹座",
+    "leo": "獅子座",
+    "virgo": "處女座",
+    "libra": "天秤座",
+    "scorpio": "天蠍座",
+    "sagittarius": "射手座",
+    "capricorn": "摩羯座",
+    "aquarius": "水瓶座",
+    "pisces": "雙魚座"
   }
 }

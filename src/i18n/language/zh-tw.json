@@ -4,10 +4,12 @@
   "projects_link": "作品",
   "contact_link": "聯絡我",
   "blog_link": "部落格",
+  "logo_name":"Ray的檔案",
   "title": "Ray's Creations",
   "home": {
     "greeting": "嗨，歡迎！",
-    "introduce": "我是Ray，始終努力成為更好的創作者。"
+    "introduce": "我是Ray，始終努力成為更好的創作者。",
+    "fileTitle": "檔案序號 #001"
   },
   "project": {
     "blog": {

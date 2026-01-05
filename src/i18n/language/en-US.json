@@ -4,10 +4,12 @@
   "projects_link": "Projects",
   "contact_link": "Contact",
   "blog_link": "Blog",
+  "logo_name":"Ray's file",
   "title": "Ray's Creations",
   "home": {
     "greeting": "Hi, and welcome!",
-    "introduce": "I'm Ray, always striving to become a better creator."
+    "introduce": "I'm Ray, always striving to become a better creator.",
+    "fileTitle":"Subject File #001"
   },
   "about": {
     "position": "Front-End Developer",

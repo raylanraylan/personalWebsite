@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Noto+Serif+TC:wght@200..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -261,23 +263,23 @@
     --effect-red-glow: var(--red-500);
   }
 
-  * {
-    @apply border-border;
-  }
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
 
+  *{
+    font-family: 'Noto Serif TC', 'Cactus Classical Serif', serif;
+  }
 }
 
 @layer utilities {
   .bg-spotlight-yellow {
-    background-color: hsl(var(--spotlight-yellow));
+    background-color: hsl(var(--brand-primary));
   }
 
   .border-spotlight-yellow {
-    border-color: hsl(var(--spotlight-yellow));
+    border-color: hsl(var(--brand-primary));
   }
 }
 

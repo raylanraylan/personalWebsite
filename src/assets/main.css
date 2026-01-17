@@ -139,16 +139,16 @@
        ===================================================== */
 
     /* --- Background Surfaces --- */
-    --bg-base: var(--paper-200);
-    --bg-surface: var(--paper-100);
-    --bg-elevated: var(--paper-50);
-    --bg-overlay: var(--paper-100);
-    --bg-input: var(--paper-100);
-    --bg-paper: var(--paper-100);
-    --bg-paper-dark: var(--paper-300);
-    --bg-manila: var(--manila-100);
-    --bg-manila-dark: var(--manila-200);
-    --bg-cork: var(--cork-200);
+    --bg-base: var(--walnut-900);
+    --bg-surface: var(--walnut-800);
+    --bg-elevated: var(--walnut-700);
+    --bg-overlay: var(--walnut-950);
+    --bg-input: var(--walnut-800);
+    --bg-paper: var(--paper-300);
+    --bg-paper-dark: var(--paper-500);
+    --bg-manila: var(--manila-300);
+    --bg-manila-dark: var(--manila-400);
+    --bg-cork: var(--cork-500);
 
     /* --- Text Colors --- */
     --text-primary: var(--walnut-800);
@@ -274,12 +274,148 @@
 }
 
 @layer utilities {
+  /* =====================================================
+     TEXT COLORS
+     ===================================================== */
+  .text-inverse {
+    color: hsl(var(--text-inverse));
+  }
+
+  .text-primary {
+    color: hsl(var(--text-primary));
+  }
+
+  .text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+
+  .text-muted {
+    color: hsl(var(--text-muted));
+  }
+
+  .text-on-paper {
+    color: hsl(var(--text-on-paper));
+  }
+
+  .text-on-paper-muted {
+    color: hsl(var(--text-on-paper-muted));
+  }
+
+  .text-on-paper-label {
+    color: hsl(var(--text-on-paper-label));
+  }
+
+  /* =====================================================
+     BACKGROUND COLORS
+     ===================================================== */
+  .bg-base {
+    background-color: hsl(var(--bg-base));
+  }
+
+  .bg-surface {
+    background-color: hsl(var(--bg-surface));
+  }
+
+  .bg-elevated {
+    background-color: hsl(var(--bg-elevated));
+  }
+
+  .bg-overlay {
+    background-color: hsl(var(--bg-overlay));
+  }
+
+  .bg-input {
+    background-color: hsl(var(--bg-input));
+  }
+
+  .bg-paper {
+    background-color: hsl(var(--bg-paper));
+  }
+
+  .bg-paper-dark {
+    background-color: hsl(var(--bg-paper-dark));
+  }
+
+  .bg-manila {
+    background-color: hsl(var(--bg-manila));
+  }
+
+  .bg-manila-dark {
+    background-color: hsl(var(--bg-manila-dark));
+  }
+
+  .bg-cork {
+    background-color: hsl(var(--bg-cork));
+  }
+
   .bg-spotlight-yellow {
     background-color: hsl(var(--brand-primary));
   }
 
+  /* =====================================================
+     BORDER COLORS
+     ===================================================== */
+  .border-default {
+    border-color: hsl(var(--border-default));
+  }
+
+  .border-subtle {
+    border-color: hsl(var(--border-subtle));
+  }
+
+  .border-strong {
+    border-color: hsl(var(--border-strong));
+  }
+
+  .border-on-paper {
+    border-color: hsl(var(--border-on-paper));
+  }
+
+  .border-on-paper-dashed {
+    border-color: hsl(var(--border-on-paper-dashed));
+  }
+
   .border-spotlight-yellow {
     border-color: hsl(var(--brand-primary));
+  }
+
+  .border-danger {
+    border-color: hsl(var(--status-danger));
+  }
+
+  .border-base{
+    border-color: hsl(var(--border))
+  }
+
+  
+  /* =====================================================
+     STATUS COLORS (Dark Mode)
+     ===================================================== */
+  .status-success {
+    color: hsl(var(--status-success));
+  }
+
+  .status-warning {
+    color: hsl(var(--status-warning));
+  }
+
+  .status-danger {
+    color: hsl(var(--status-danger));
+  }
+
+  .status-info {
+    color: hsl(var(--status-info));
+  }
+
+  /* =====================================================
+     EFFECT COLORS (Dark Mode)
+     ===================================================== */
+  .shadow-noir {
+    box-shadow: var(--shadow-noir);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
 }
 

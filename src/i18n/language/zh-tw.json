@@ -1,36 +1,152 @@
 {
-  "home_link": "首頁",
-  "about_link": "關於我",
-  "projects_link": "作品",
-  "contact_link": "聯絡我",
-  "blog_link": "部落格",
   "profile_section": "檔案資訊",
   "arseanal_section":"使用工具",
   "timeline_section":"執行時間軸",
   "cases_section":"過往涉及案件",
   "contact_section":"發起交涉",
   "logo_name":"Ray的檔案",
-  "title": "Ray's Creations",
-  "home": {
-    "greeting": "嗨，歡迎！",
-    "introduce": "我是Ray，始終努力成為更好的創作者。",
-    "fileTitle": "檔案序號 #001"
+  "title": "Ray's file",
+  "hero": {
+    "fileType":"檔案類型：公開資料",
+    "fileDescription":"正在尋找解決方案嗎？線索都在這裡。",
+    "useFile":"以向下捲動的方式進行檢視",
+    "quickOpen":"快速開啟個人檔案"
+  },
+  "about": {
+    "title":"個人簡介",
+    "stamp":"全面運作中",
+    "items":{
+      "name": {
+        "title":"個案姓名",
+        "content":"Ray"
+      },
+      "position": {
+        "title":"職業",
+        "content":"前端工程師"
+      },
+      "status":{
+        "title":"現況",
+        "content":"目前正尋找任何形式的前端相關工作機會"
+      },
+      "location": {
+        "title":"所在地",
+        "content":"臺灣高雄市"
+      },
+      "yearsOfExperience": {
+        "title":"執行年資",
+        "content":"1年以上"
+      }
+    },
+    "description":{
+      "title":"分析",
+      "content":"約一年的觀測期間，受試者展現了穩定的自我迭代 (Self-Iteration) 機制。不只能獨立建構系統，更具備主動引入新變數（新技術）以提升運算效率的傾向。"
+    },
+    "footer":{
+      "fileNumber":"檔案序號",
+      "updated":"最後更新日期"
+    },
+    "colon":"："
+  },
+  "skills": {
+    "title":"操作工具箱",
+    "items": [
+    {
+      "title":"結構與表層",
+      "items":["HTML5","CSS3","Sass","Tailwind CSS"],
+      "urls":["https://developer.mozilla.org/en-US/docs/Web/HTML","https://developer.mozilla.org/en-US/docs/Web/CSS","https://sass-lang.com/","https://tailwindcss.com/"]
+    },
+    {
+      "title":"邏輯協議",
+      "items":["JavaScript (ES6+)","TypeScript"],
+      "urls":["https://developer.mozilla.org/en-US/docs/Web/JavaScript","https://www.typescriptlang.org/"]
+    },
+    {
+      "title":"系統架構",
+      "items":["Vue.js(Composition Api)","Vite","Pinia","Vue Router","Axios","VueQuery"],
+      "urls":["https://vuejs.org/","https://vitejs.dev/","https://pinia.vuejs.org/","https://router.vuejs.org/","https://axios-http.com/","https://tanstack.com/query/v5/docs/framework/vue/overview"]
+    },
+    {
+      "title":"監管鏈",
+      "items":["Git","n8n"],
+      "urls":["https://git-scm.com/","https://n8n.io/"]
+    },
+    {
+      "title":"視覺藍圖",
+      "items":["Figma","UI/UX(AI Assisted)"],
+      "urls":["https://www.figma.com/",""]
+    }
+  ],
+    "description":"所有能力均已驗證並可運作"
+  },
+  "experienceTimeline": {
+    "title": "案件時間軸",
+    "items": [
+      {
+        "company": "連訊科技服務股份有限公司",
+        "timeRange":"2024/5 - 2024/9",
+        "title":"前端工程師",
+        "work":[
+            {
+              "title": "微商後台介面",
+              "content":"參與微商後台介面的開發，新增身份管理頁面與權限控管設定，並串接相關 API；維護客戶需求功能，改善系統使用體驗。"
+            },
+            {
+              "title": "表單流程網站",
+              "content":"負責表單流程網站的前端開發，使用 Vue.js 建立基礎架構，並透過 Vue Router 管理路由、Pinia 管理資料及欄位計算；重新設計原始表單，實作篩選、送出功能及流程進度與結果顯示。"
+            },
+            {
+              "title": "題目問答網站",
+              "content":"開發題目問答網站，使用 Vue.js 建立直觀的問答流程，並規劃簡易網頁架構與操作流程。"
+            }
+          ]
+      },{
+        "company":"盛大資訊股份有限公司",
+        "timeRange":"2025/3 - 2025/9",
+        "title":"AI分析/前後端開發工程師",
+        "work":[
+          {
+            "title":"AI系統錯誤處理與分析",
+            "content":"參與AI系統錯誤資訊整理，釐清AI回覆異常（如產生幻覺、不回應）的原因。"
+          },
+          {
+            "title":"前端開發",
+            "content":"使用Vue 3、Vue Router、Vue Query開發更新日誌功能、統計版面，並搭配UI框架，並協助改善部分頁面設計與使用體驗。"
+          },
+          {
+            "title":"後端與資料處理",
+            "content":"使用 Express.js 建立後端 API，搭配 SQL 與 Sequelize 進行資料處理，開發更新日誌功能。改善每日紀錄的資料處理流程，並學習 SQL，以提供客戶所需的各類資料。為縮短每日紀錄的處理時間，學習並使用 n8n，將作業時間由 20 分鐘減少至 5 分鐘內，大幅提升效率。"
+          },
+          {
+            "title":"資料分析",
+            "content":"撰寫文書報告，分析數據異常或訊息量偏少等可能原因，並協助客戶將完整報告提交給上司。"
+          },
+          {
+            "title":"爬蟲維護",
+            "content":"協助調整爬蟲設定，確保每次都能正確抓取資料。在遇到問題時，及時回報工程師進行修正。"
+          }
+        ]
+      }
+    ]
   },
   "project": {
-    "blog": {
-      "title": "部落格",
-      "description": "撰寫個人感想或紀錄的地方"
-    },
-    "book-horizon": "書海藍圖",
-    "iTHelp-keep-sharing-award-2023": {
-      "title": "IT邦幫忙鐵人賽2023",
-      "description": "撰寫三十天的技術文章。主題為Javascript物件與DOM。"
-    },
-    "personalPage": {
-      "title": "個人網頁",
-      "description": "集合我的背景與經歷，並展示曾經製作的作品。"
-    },
-    "view": "前往觀看"
+    "title":"",
+    "items":[
+      {
+        "title": "部落格",
+        "description": "近期開始撰寫部落格，主要會放上學習到的筆記、遇到難關的紀錄，未來會持續更新。",
+        "url":"https://raylanraylan.github.io/blog/"
+      },
+      {
+        "title":"書海藍圖",
+        "description":"（開發兩次，皆因成員離開而停止開發。）書海藍圖是一個以書本評論為核心，結合社交互動功能的網站，目前已開發繁體中文介面的首頁。",
+        "url":"https://book-horizon.com/"
+      },
+      {
+        "title":"2023IThome鐵人賽",
+        "description":"撰寫三十天的技術文章，主題為Javascript物件與DOM。"
+      }
+    ],
+    "view":"前往觀看"
   },
   "contact": {
     "email": "電子郵件",
@@ -51,41 +167,6 @@
       }
     }
   },
-  "about": {
-    "education": "學歷",
-    "position": "前端工程師",
-    "skills": "技能",
-    "work-experience": "工作經驗",
-    "company": {
-      "legend": "連訊科技服務股份有限公司"
-    },
-    "school": "國立臺南藝術大學",
-    "school-department": "動畫藝術與影像美學研究所",
-    "skill": {
-      "programmingFrameworks": "前端程式語言與框架",
-      "structureStyling": "網頁結構與樣式設計",
-      "versionControl": "版本控制"
-    },
-    "work": {
-      "legend": {
-        "formProcess": {
-          "basicStructure": "使用Vue.js建置基本架構，使用Vue Router管理路由、並透過Pinia管理資料以及部分欄位的計算。",
-          "title": "表單流程網站",
-          "webpagePlanning": "製作簡易網頁規劃與流程"
-        },
-        "questionAndAnswer": {
-          "webpagePlanning": "製作簡易網頁規劃與流程。",
-          "title": "題目問答網站",
-          "intuitiveQA": "使用Vue.js建立直觀問答流程。"
-        },
-        "microBusiness": {
-          "title": "微商後台介面",
-          "identityManagement": "新增對應身份管理頁面、權限控管設定，並串接對應的API。",
-          "userExperience": "維護客戶需求功能，改善系統的使用體驗。"
-        }
-      }
-    }
-  },
   "footer": {
     "copyright": "版權所有"
   },
@@ -93,19 +174,5 @@
     "goBackHome": "回首頁",
     "title": "找不到頁面",
     "content": "抱歉，我們找不到您搜尋的頁面"
-  },
-  "starMap": {
-    "aries": "牡羊座",
-    "taurus": "金牛座",
-    "gemini": "雙子座",
-    "cancer": "巨蟹座",
-    "leo": "獅子座",
-    "virgo": "處女座",
-    "libra": "天秤座",
-    "scorpio": "天蠍座",
-    "sagittarius": "射手座",
-    "capricorn": "摩羯座",
-    "aquarius": "水瓶座",
-    "pisces": "雙魚座"
   }
 }

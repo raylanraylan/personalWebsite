@@ -11,8 +11,12 @@
   "compilerOptions": {
     "allowJs": true,
     "noEmitOnError":true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
   },
   "vueCompilerOptions": {
     "plugins": ["@vue-macros/volar/template-ref"]
-  }
+  },
 }

@@ -1,71 +1,166 @@
 {
-  "home_link": "Home",
-  "about_link": "About",
-  "projects_link": "Projects",
-  "contact_link": "Contact",
-  "blog_link": "Blog",
-  "title": "Ray's Creations",
-  "home": {
-    "greeting": "Hi, and welcome!",
-    "introduce": "I'm Ray, always striving to become a better creator."
+  "profile_section": "Profile",
+  "arseanal_section":"Arseanal",
+  "timeline_section":"Timeline",
+  "cases_section":"Cases",
+  "contact_section":"InitiateContact",
+  "logo_name":"Ray's file",
+  "title": "Ray's file",
+  "hero": {
+    "fileType":"The Confidential File.",
+    "fileDescription":"Looking for a solution? The clues are all here.",
+    "useFile":"SCROLL TO INVESTIGATE",
+    "quickOpen":"QUICK OPEN PROFILE"
   },
   "about": {
-    "position": "Front-End Developer",
-    "skills": "SKILLS",
-    "work-experience": "WORK EXPERIENCE",
-    "education": "EDUCATION",
-    "company": {
-      "legend": "LEGEND INFOSHARING CO.,LTD."
-    },
-    "school": "Tainan National University of the Arts",
-    "school-department": "Graduate Institute of Animation and Film Art",
-    "skill": {
-      "programmingFrameworks": "Frontend Programming & Frameworks",
-      "versionControl": "Version Control",
-      "structureStyling": "Frontend Structure & Styling"
-    },
-    "work": {
-      "legend": {
-        "microBusiness": {
-          "title": "Micro Business Backend Interface",
-          "identityManagement": "Added a corresponding identity management page and permission control settings, and integrated the related APIs.",
-          "userExperience": "Maintained customer-required functionalities and improved the system's user experience."
-        },
-        "formProcess": {
-          "title": "Form Process Website",
-          "basicStructure": "Form Process Website",
-          "webpagePlanning": "Created simple webpage planning and flow."
-        },
-        "questionAndAnswer": {
-          "title": "Question and Answer Website",
-          "intuitiveQA": "Built an intuitive Q&A flow using Vue.js.",
-          "webpagePlanning": "Created simple webpage planning and flow."
-        }
+    "title":"Profile",
+    "stamp":"Fully Operational",
+    "items":{
+      "name": {
+        "title":"Name",
+        "content":"Ray"
+      },
+      "position": {
+        "title":"Position",
+        "content":"Front-End Developer"
+      },
+      "status":{
+        "title":"Status",
+        "content":"Currently seeking front-end related job opportunities, in any form"
+      },
+      "location": {
+        "title":"Location",
+        "content":"Kaohsiung City, Taiwan"
+      },
+      "yearsOfExperience": {
+        "title":"Years of Experience",
+        "content":"Over 1 year"
       }
-    }
+    },
+    "description":{
+      "title":"Analysis",
+      "content":"Over an observation period of approximately one year, the Subject has exhibited a stable mechanism of Self-Iteration. Beyond the capacity for autonomous system construction, the Subject displays a proactive tendency to introduce new variables (emerging technologies) to optimize operational efficiency."
+    },
+    "footer":{
+      "fileNumber":"FILE",
+      "updated":"LAST UPDATED"
+    },
+    "colon":":"
+  },
+  "skills": 
+    {
+      "title":"Operational Toolkit",
+      "items":[
+          {
+            "title":"STRUCTURE & SURFACE",
+            "items":["HTML5","CSS3","Sass","Tailwind CSS"],
+            "urls":["https://developer.mozilla.org/en-US/docs/Web/HTML","https://developer.mozilla.org/en-US/docs/Web/CSS","https://sass-lang.com/","https://tailwindcss.com/"]
+          },
+          {
+            "title":"LOGIC PROTOCOLS",
+            "items":["JavaScript (ES6+)","TypeScript"],
+            "urls":["https://developer.mozilla.org/en-US/docs/Web/JavaScript","https://www.typescriptlang.org/"]
+          },
+          {
+            "title":"SYSTEM ARCHITECTURE",
+            "items":["Vue.js(Composition Api)","Vite","Pinia","Vue Router","Axios","VueQuery"],
+            "urls":["https://vuejs.org/","https://vitejs.dev/","https://pinia.vuejs.org/","https://router.vuejs.org/","https://axios-http.com/","https://tanstack.com/query/v5/docs/framework/vue/overview"]
+          },
+          {
+            "title":"CHAIN OF CUSTODY",
+            "items":["Git","n8n"],
+            "urls":["https://git-scm.com/","https://n8n.io/"]
+          },
+          {
+            "title":"VISUAL SCHEMATICS",
+            "items":["Figma","UI/UX(AI Assisted)"],
+            "urls":["https://www.figma.com/",""]
+          }
+        ],
+      "description":"ALL CAPABILITIES VERIFIED AND OPERATIONAL."
+    },
+  "experienceTimeline":{
+    "title": "Case Timeline",
+    "items": [
+      {
+        "company": "LEGEND INFOSHARING CO.,LTD.",
+        "timeRange":"2024/5 - 2024/9",
+        "title":"Front-End Developer",
+        "work": [
+          {
+            "title": "E-commerce Admin Interface",
+            "content": "Contributed to the development of an e-commerce admin interface. Developed identity management pages and access control settings, and integrated relevant APIs. Maintained features based on client requirements and enhanced the overall system user experience."
+          },
+          {
+            "title": "Form Workflow Application",
+            "content": "Responsible for the front-end development of a form workflow system. Established the base architecture using Vue.js, managed routing with Vue Router, and handled data state and field calculations using Pinia. Redesigned original forms and implemented filtering, submission, progress tracking, and result display features."
+          },
+          {
+            "title": "Q&A Platform",
+            "content": "Developed a Q&A website. Built an intuitive question-and-answer flow using Vue.js and planned a streamlined web architecture and user interaction process."
+          }
+        ]
+      },
+      {
+        "company":"Grand Information Co., Ltd.",
+        "timeRange":"2025/3 - 2025/9",
+        "title":"AI Analysis/Full-Stack Developer(Dispatched to assist other companies in AI project development)",
+        "work": [
+          {
+            "title": "AI System Error Analysis",
+            "content": "Organized and analyzed AI system error logs to diagnose the root causes of response anomalies, such as hallucinations or non-responsiveness."
+          },
+          {
+            "title": "Front-end Development",
+            "content": "Developed a changelog feature and a statistics dashboard using Vue 3, Vue Router, and Vue Query, integrated with UI frameworks. Also assisted in optimizing page designs and enhancing user experience."
+          },
+          {
+            "title": "Back-end & Data Processing",
+            "content": "Built backend APIs using Express.js and managed data with SQL and Sequelize to support the changelog feature. Optimized daily data processing workflows and utilized SQL to retrieve specific data for clients. Learned and implemented n8n automation, reducing daily processing time from 20 minutes to under 5 minutes, significantly boosting efficiency."
+          },
+          {
+            "title": "Data Analysis",
+            "content": "Compiled comprehensive reports analyzing potential causes for data anomalies or low message volumes, and assisted clients in presenting these findings to management."
+          },
+          {
+            "title": "Web Crawler Maintenance",
+            "content": "Assisted in configuring web crawler settings to ensure accurate data extraction. Collaborated with engineers to promptly resolve scraping issues."
+          }
+        ]
+      }
+    ]
   },
   "project": {
-    "blog": {
+    "title":"Show Case",
+    "items":[
+    {
       "title": "Blog",
-      "description": "A place to write personal reflections or records."
+      "description": "A place to write personal reflections or records.",
+      "yearRange":"2024 - 進行中",
+      "url":"https://raylanraylan.github.io/blog/"
     },
-    "book-horizon": "Book Horizon",
-    "iTHelp-keep-sharing-award-2023": {
+    {
+      "title": "Book Horizon",
+      "description": "A website for book reviews and social interaction.",
+      "yearRange":"2024 - 2025",        
+      "url":"https://book-horizon.com/"
+    },
+    {
       "title": "ITHelp Keep Sharing Award 2023",
-      "description": "Write a 30-day series of technical articles on the topic of JavaScript objects and the DOM."
-    },
-    "personalPage": {
-      "title": "Personal Website",
-      "description": "Showcase my background and experience, as well as the projects I have previously worked on."
-    },
-    "view": "view"
+      "description": "Write a 30-day series of technical articles on the topic of JavaScript objects and the DOM.",
+      "yearRange":"2023",        
+      "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507"
+    }
+  ],
+    "view": "Click to view project"
   },
   "contact": {
     "name": "Name",
     "email": "E-mail",
     "content": "Content",
-    "title": "Chat with me",
+    "title": "Initiate Contact",
     "description": "Should you have any questions, feel free to share your thoughts by filling out the form below.",
+    "formTitle":"Leave a Trace",
     "sendForm": "Submit",
     "submitResult": {
       "success": {
@@ -77,6 +172,19 @@
         "content": "I apologize, your message could not be sent. You can contact us directly by sending an email to",
         "title": "Failed to send your message"
       }
+    },
+    "contactMethods":{
+      "title":"Contact Methods",
+      "items":[
+        {
+          "method":"Email",
+          "value":"startup9043672@gmail.com"
+        },
+        {
+          "method":"GitHub",
+          "value":"https://github.com/raylanraylan"
+        }
+      ]
     }
   },
   "footer": {
@@ -86,19 +194,5 @@
     "goBackHome": "Go back home",
     "title": "Page not found",
     "content": "Sorry, we couldn’t find the page you’re looking for."
-  },
-  "starMap": {
-    "aries": "Aries",
-    "taurus": "Taurus",
-    "gemini": "Gemini",
-    "cancer": "Cancer",
-    "leo": "Leo",
-    "virgo": "Virgo",
-    "libra": "Libra",
-    "scorpio": "Scorpio",
-    "sagittarius": "Sagittarius",
-    "capricorn": "Capricorn",
-    "aquarius": "Aquarius",
-    "pisces": "Pisces"
   }
 }

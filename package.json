@@ -15,7 +15,13 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.1.5",
-    "gsap": "^3.13.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.561.0",
+    "reka-ui": "^2.7.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "^3.5.12",
     "vue-i18n": "^10.0.0",
     "vue-router": "^4.3.3"

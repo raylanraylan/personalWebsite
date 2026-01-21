@@ -7,7 +7,6 @@ import Footer from '@/components/layout/Footer.vue';
 import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
 
 const route = useRoute()
-const heightSize = ref<string>();
 const process = ref<number>(0);
 const runProcess = setInterval(() => {
   if (process.value < 98) {
@@ -15,14 +14,10 @@ const runProcess = setInterval(() => {
   }
 }, 100)
 
-async function getSize(size: number) {
-  heightSize.value = size + 'px';
-  await nextTick()
-}
 
 const isLoading = ref(true);
 const isShowContent = ref(false)
-const isToggleDark = ref(false)
+const isToggleDark = ref(true)
 
 const updateTheme = () => {
   if (isToggleDark.value) {
@@ -54,23 +49,23 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
+  <!-- <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
     <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark ? '#fcfcfc' : '#1f2937'" />
     <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
-  </div>
-  <div v-else="!isLoading">
-    <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full">
-      <Header class="max-w-7xl mx-auto px-[5vw] py-5" @heightSize="getSize" />
+  </div> -->
+  <!-- <div v-else> -->
+  
+    <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full z-50">
+      <Header/>
     </header>
-    <Transition appear name="slide-fade">
-      <main v-show="isShowContent" class="px-[5vw] pt-10 pb-20 max-w-4xl mx-auto" :style="[{ 'margin-top': heightSize }]">
-        <RouterView />
-      </main>
-    </Transition>
+    <!-- <main v-show="isShowContent"> -->
+    <main class="relative">
+      <RouterView />
+    </main>
     <footer v-if="route.name !== 'notFound'">
       <Footer />
     </footer>
-  </div>
+  <!-- </div> -->
 </template>
 
 <style>

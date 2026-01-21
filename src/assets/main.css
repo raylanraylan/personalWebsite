@@ -209,6 +209,11 @@
     --input: var(--bg-input);
     --ring: var(--brand-highlight);
 
+    --walnut: 25 40% 12%;
+    --walnut-light:25 30% 22%;
+    --corkboard:var(--cork-500);
+    --ink-black:var(--neutral-950);
+
     --radius: 0.25rem;
   }
   .dark {
@@ -261,6 +266,16 @@
     --effect-glow: var(--gold-400);
     --effect-shadow: var(--neutral-1000);
     --effect-red-glow: var(--red-500);
+
+    --walnut: 25 40% 12%;
+    --walnut-light:25 30% 22%;
+    --corkboard:var(--cork-500);
+    --ink-black:var(--neutral-950);
+
+  }
+
+  *{
+    font-family: 'Noto Serif TC', 'Cactus Classical Serif', serif;
   }
 
   body {
@@ -268,8 +283,14 @@
     color: hsl(var(--foreground));
   }
 
-  *{
-    font-family: 'Noto Serif TC', 'Cactus Classical Serif', serif;
+  section{
+    padding:20px 10px;
+    @media (max-width: 768px) {
+      padding:40px 20px;
+    }
+    @media (min-width: 1280px) {
+      padding:80px 160px;
+    } 
   }
 }
 
@@ -303,6 +324,10 @@
 
   .text-on-paper-label {
     color: hsl(var(--text-on-paper-label));
+  }
+
+  .text-ink-black {
+    color: hsl(var(--ink-black));
   }
 
   /* =====================================================
@@ -350,6 +375,16 @@
 
   .bg-spotlight-yellow {
     background-color: hsl(var(--brand-primary));
+  }
+
+  .bg-walnut{
+    background-color: hsl(var(--walnut));
+  }
+
+  .bg-corkboard{
+    background-color: hsl(var(--corkboard));
+    /* background: linear-gradient(90deg,transparent 49.5%,hsl(var(--walnut-light) / .1) 49.5%,hsl(var(--walnut-light) / .1) 50.5%,transparent 50.5%),linear-gradient(transparent 49.5%,hsl(var(--walnut-light) / .1) 49.5%,hsl(var(--walnut-light) / .1) 50.5%,transparent 50.5%),hsl(var(--corkboard)); */
+    /* background-size:20px 20px,20px 20px,100% 100%; */
   }
 
   /* =====================================================

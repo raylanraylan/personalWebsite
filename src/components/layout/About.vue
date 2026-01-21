@@ -28,7 +28,7 @@ const aboutItems = [
     <h2 class="text-center text-3xl mb-10">{{ $t('profile_section') }}</h2>
     <Card class="bg-paper p-12 relative">
       <CardHeader class="p-0">
-        <CardTitle class="absolute right-[10px] top-[100px] rotate-[25deg] opacity-70">
+        <CardTitle class="absolute right-[10px] top-[100px] rotate-25 opacity-70">
           <h3 class="text-5xl status-danger p-4 border-2 border-danger uppercase">{{ $t('about.stamp') }}</h3>
         </CardTitle>
         <CardDescription>
@@ -40,12 +40,12 @@ const aboutItems = [
           </div>
         </CardDescription>
       </CardHeader>
-      <hr class="h-[1px] border-dashed bg-surface my-5"/>
+      <hr class="h-px border-dashed bg-surface my-5"/>
       <CardContent class="p-0">
         <h4 class="text-gray-500">{{ $t('about.description.title') }}{{$t('about.colon')}}</h4>
         <p class="text-lg text-on-paper-label">{{ $t('about.description.content') }}</p>
       </CardContent>
-      <hr class="h-[1px] border-dashed bg-surface my-5"/>
+      <hr class="h-px border-dashed bg-surface my-5"/>
       <CardFooter class="justify-between p-0 text-xs  text-gray-500">
         <span>{{ props.fileNumber }}</span>
         <span>{{$t('about.footer.updated')}}{{$t('about.colon')}}{{ updatedDate }}</span>

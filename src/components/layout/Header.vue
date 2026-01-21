@@ -27,8 +27,8 @@ const navigation = [
   { i18nName: 'contact_section', path: '#contact' },
 ]
 
-const closeMenu = ref("bg-gray-500 w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-[-0.5rem] before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-[-0.5rem] after:duration-300");
-const openMenu = ref("transparent w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-0 before:rotate-[135deg] before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-0 after:duration-300 after:rotate-45")
+const closeMenu = ref("bg-gray-500 w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:-top-2 before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:-bottom-2 after:duration-300");
+const openMenu = ref("transparent w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-0 before:rotate-135 before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-0 after:duration-300 after:rotate-45")
 
 function toggleColor(){
   console.log(1)
@@ -70,14 +70,14 @@ document.addEventListener('scroll',()=>{
           </a>
         </h1>
         <!-- Mobile menu button-->
-        <DisclosureButton class="w-10 h-10 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden" >
+        <DisclosureButton class="w-10 h-10 relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:shadow-lg focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-white sm:hidden" >
           <span class="absolute -inset-0.5" />
           <span class="sr-only">Open main menu</span>
           <span :class="open?openMenu:closeMenu"></span>
           <div class="hidden sm:block"></div>
         </DisclosureButton>
         <div class="flex space-x-4 whitespace-nowrap">
-            <a v-for="item in navigation" :key="item.i18nName" :href="item.path" class="p-2 text-sm text-muted-foreground duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-[1px] hover:after:bg-paper hover:after:block hover:after:duration-700">{{ $t(item.i18nName) }}</a>
+            <a v-for="item in navigation" :key="item.i18nName" :href="item.path" class="p-2 text-sm text-muted-foreground duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-px hover:after:bg-paper hover:after:block hover:after:duration-700">{{ $t(item.i18nName) }}</a>
             <!-- <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
               <span>{{ $t('blog_link') }}</span> -->
               <!-- <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon> -->

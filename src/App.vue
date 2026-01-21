@@ -49,7 +49,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <!-- <div v-if="isLoading" class="w-full h-[100vh] loading flex flex-col justify-center">
+  <!-- <div v-if="isLoading" class="w-full h-screen loading flex flex-col justify-center">
     <PersonalWebLogo class="h-20 w-full" :lineColor="isToggleDark ? '#fcfcfc' : '#1f2937'" />
     <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
   </div> -->

@@ -18,7 +18,7 @@ const { tm } = useI18n();
           <span class="block mb-1 text-sm text-on-paper-label">{{ experience.title }}</span>
           <span class="block w-fit px-2 py-1 text-xs text-primary rounded bg-surface">{{ experience.timeRange }}</span>
         </CardTitle>
-        <hr class="h-[1px] border-dashed bg-surface"/>
+        <hr class="h-px border-dashed bg-surface"/>
       </CardHeader>
       <CardContent>
         <ul class="pl-5 list-[square] space-y-2">

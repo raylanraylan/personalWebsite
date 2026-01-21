@@ -110,7 +110,7 @@ async function submitData(e: Event) {
               <div class="mt-4 flex justify-center">
                 <button
                   type="button"
-                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
+                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
                   @click="closeModal"
                 >
                 {{ $t('contact.submitResult.close')}}
@@ -136,7 +136,7 @@ async function submitData(e: Event) {
               <div class="mt-4 flex justify-center">
                 <button
                   type="button"
-                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
+                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
                   @click="closeModal"
                 >
                   {{ $t('contact.submitResult.close')}}
@@ -171,7 +171,7 @@ async function submitData(e: Event) {
         <div class="sm:w-72 mx-auto">
           <label for="name" class="block text-sm text-on-paper-muted font-medium leading-6">{{ $t("contact.name") }}</label>
           <div class="mt-2">
-            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
+            <div class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
               <input type="text" name="name" id="name" autocomplete="name" v-model="formData.name" class="block flex-1 border-0 bg-transparent text-on-paper p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6"/>
             </div>
           </div>
@@ -180,7 +180,7 @@ async function submitData(e: Event) {
         <div class="sm:w-72 mx-auto">
           <label for="email" class="block text-sm text-on-paper-muted font-medium leading-6">{{ $t("contact.email") }}</label>
           <div class="mt-2">
-            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
+            <div class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
               <input type="email" name="email" id="email" v-model="formData.email" class="block flex-1 border-0 bg-transparent text-on-paper p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
             </div>
           </div>
@@ -189,7 +189,7 @@ async function submitData(e: Event) {
         <div class="sm:w-72 mx-auto">
           <label for="content" class="block text-sm text-on-paper-muted font-medium leading-6">{{ $t("contact.content") }}</label>
           <div class="mt-2">
-            <textarea id="content" name="content" rows="3" v-model="formData.content" class="block w-full rounded-md border-0 p-2 text-on-paper shadow-sm ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            <textarea id="content" name="content" rows="3" v-model="formData.content" class="block w-full rounded-md border-0 p-2 text-on-paper shadow-xs ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />
           </div>
         </div>
 

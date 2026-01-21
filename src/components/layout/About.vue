@@ -24,7 +24,7 @@ const aboutItems = [
 
 </script>
 <template>
-  <section class="px-40 py-20 bg-[linear-gradient(180deg, hsl(0 0% 1% / 1), transparent)]">
+  <section class="bg-[linear-gradient(180deg, hsl(0 0% 1% / 1), transparent)]">
     <h2 class="text-center text-3xl mb-10">{{ $t('profile_section') }}</h2>
     <Card class="bg-paper p-12 relative">
       <CardHeader class="p-0">

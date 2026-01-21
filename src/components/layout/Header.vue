@@ -16,8 +16,8 @@ const emit = defineEmits<{
 
 const route = useRoute();
 
-const toggleLanguage = ref<Boolean>(false);
-const isToggleDark = ref<Boolean>(false);
+const toggleLanguage = ref<boolean>(false);
+const isToggleDark = ref<boolean>(true);
 const logoName = ref('logo_name');
 const navigation = [
   { i18nName: 'profile_section', path: '#profile' },
@@ -102,7 +102,7 @@ document.addEventListener('scroll',()=>{
             </div>
           </Switch>
           <Switch
-            :value="isToggleDark"
+            :value="String(isToggleDark)"
             :class="isToggleDark ?'bg-gray-100 drop-shadow-lg': 'bg-amber-400 shadow-[inset_2px_2px_3px_0_rgba(200,70,40,0.7)]'"
             class="relative inline-flex justify-center h-8 w-8 items-center rounded-full"
             @click="toggleColor"

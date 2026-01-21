@@ -30,14 +30,14 @@ function openModal() {
   isOpen.value = true
 }
 
-async function submitData(e) {
-  const data = new FormData(e.target);        
+async function submitData(e: Event) {
+  const data = new FormData(e.target as HTMLFormElements);        
   for (const value of data.values()) {
    if (value==='') return; 
   }
   
   try {
-    const data = new FormData(e.target);        
+    const data = new FormData(e.target as HTMLFormElements);        
     const res = await fetch('https://formspree.io/f/mblrnwjb', {
       method: 'POST',
       body: data,

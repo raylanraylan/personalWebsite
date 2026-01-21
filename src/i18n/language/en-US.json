@@ -104,7 +104,7 @@
       {
         "company":"Grand Information Co., Ltd.",
         "timeRange":"2025/3 - 2025/9",
-        "title":"AI Analysis/Full-Stack Developer",
+        "title":"AI Analysis/Full-Stack Developer(Dispatched to assist other companies in AI project development)",
         "work": [
           {
             "title": "AI System Error Analysis",
@@ -131,27 +131,36 @@
     ]
   },
   "project": {
-    "blog": {
+    "title":"Show Case",
+    "items":[
+    {
       "title": "Blog",
-      "description": "A place to write personal reflections or records."
+      "description": "A place to write personal reflections or records.",
+      "yearRange":"2024 - 進行中",
+      "url":"https://raylanraylan.github.io/blog/"
     },
-    "book-horizon": "Book Horizon",
-    "iTHelp-keep-sharing-award-2023": {
+    {
+      "title": "Book Horizon",
+      "description": "A website for book reviews and social interaction.",
+      "yearRange":"2024 - 2025",        
+      "url":"https://book-horizon.com/"
+    },
+    {
       "title": "ITHelp Keep Sharing Award 2023",
-      "description": "Write a 30-day series of technical articles on the topic of JavaScript objects and the DOM."
-    },
-    "personalPage": {
-      "title": "Personal Website",
-      "description": "Showcase my background and experience, as well as the projects I have previously worked on."
-    },
-    "view": "view"
+      "description": "Write a 30-day series of technical articles on the topic of JavaScript objects and the DOM.",
+      "yearRange":"2023",        
+      "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507"
+    }
+  ],
+    "view": "Click to view project"
   },
   "contact": {
     "name": "Name",
     "email": "E-mail",
     "content": "Content",
-    "title": "Chat with me",
+    "title": "Initiate Contact",
     "description": "Should you have any questions, feel free to share your thoughts by filling out the form below.",
+    "formTitle":"Leave a Trace",
     "sendForm": "Submit",
     "submitResult": {
       "success": {
@@ -163,6 +172,19 @@
         "content": "I apologize, your message could not be sent. You can contact us directly by sending an email to",
         "title": "Failed to send your message"
       }
+    },
+    "contactMethods":{
+      "title":"Contact Methods",
+      "items":[
+        {
+          "method":"Email",
+          "value":"startup9043672@gmail.com"
+        },
+        {
+          "method":"GitHub",
+          "value":"https://github.com/raylanraylan"
+        }
+      ]
     }
   },
   "footer": {

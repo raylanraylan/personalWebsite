@@ -102,7 +102,7 @@
       },{
         "company":"盛大資訊股份有限公司",
         "timeRange":"2025/3 - 2025/9",
-        "title":"AI分析/前後端開發工程師",
+        "title":"AI分析/前後端開發工程師(派遣至其他公司協助開發AI專案)",
         "work":[
           {
             "title":"AI系統錯誤處理與分析",
@@ -129,31 +129,36 @@
     ]
   },
   "project": {
-    "title":"",
+    "title":"展示案件",
     "items":[
       {
         "title": "部落格",
         "description": "近期開始撰寫部落格，主要會放上學習到的筆記、遇到難關的紀錄，未來會持續更新。",
+        "yearRange":"2024 - 進行中",
         "url":"https://raylanraylan.github.io/blog/"
       },
       {
         "title":"書海藍圖",
         "description":"（開發兩次，皆因成員離開而停止開發。）書海藍圖是一個以書本評論為核心，結合社交互動功能的網站，目前已開發繁體中文介面的首頁。",
+        "yearRange":"2024 - 2025",        
         "url":"https://book-horizon.com/"
       },
       {
         "title":"2023IThome鐵人賽",
-        "description":"撰寫三十天的技術文章，主題為Javascript物件與DOM。"
+        "description":"撰寫三十天的技術文章，主題為Javascript物件與DOM。",
+        "yearRange":"2023",        
+        "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507"
       }
     ],
-    "view":"前往觀看"
+    "view":"點擊前往專案觀看"
   },
   "contact": {
+    "title":"建立聯繫",
     "email": "電子郵件",
     "name": "您的名字",
     "content": "內容",
-    "title": "與我聊聊",
     "description": "如果您有任何問題，歡迎透過填寫下面的表單填寫您的任何想法。",
+    "formTitle":"留下蹤跡",
     "sendForm": "寄出留言",
     "submitResult": {
       "close": "關閉視窗",
@@ -165,6 +170,19 @@
         "content": "感謝您的留言，我會儘快回覆您。",
         "title": "您的留言已成功送出"
       }
+    },
+    "contactMethods":{
+      "title":"聯繫方式",
+      "items":[
+        {
+          "method":"電子郵件",
+          "value":"startup9043672@gmail.com"
+        },
+        {
+          "method":"GitHub",
+          "value":"https://github.com/raylanraylan"
+        }
+      ]
     }
   },
   "footer": {

@@ -285,7 +285,7 @@
 
   section{
     padding:20px 10px;
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
       padding:40px 20px;
     }
     @media (min-width: 1280px) {

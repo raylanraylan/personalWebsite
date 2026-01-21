@@ -10,7 +10,7 @@ const { tm } = useI18n();
 
 </script>
 <template>
-  <section class="px-40 py-20 bg-secondary">
+  <section class="bg-secondary">
     <h2 class="text-center text-3xl mb-10">{{ $t('skills.title') }}</h2>
     <div class="grid lg:grid-cols-6 gap-5 mb-10">
       <Card class="border-base bg-base hover:border-spotlight-yellow relative" :class="index>2?'col-span-3':'col-span-2'" v-for="(skill, index) in tm('skills.items')" :key="index">

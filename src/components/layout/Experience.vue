@@ -11,7 +11,7 @@ const { tm } = useI18n();
 <template>
   <section class="relative bg-corkboard">
     <h2 class="text-center text-3xl mb-10">{{ $t('experienceTimeline.title') }}</h2>
-    <Card class="block w-[450px] bg-paper rounded-lg mb-10 shadow-xl shadow-amber-800/50 last:mb-0" :class="index%2 === 0 ? 'mr-auto -rotate-2' : 'ml-auto rotate-2'" v-for="(experience, index) in tm('experienceTimeline.items')" :key="index">
+    <Card class="block w-[450px] bg-paper rounded-lg mb-10 shadow-xl shadow-amber-800/50 last:mb-0" :class="Number(index)%2 === 0 ? 'mr-auto -rotate-2' : 'ml-auto rotate-2'" v-for="(experience, index) in tm('experienceTimeline.items')" :key="index">
       <CardHeader>
         <CardTitle class="mb-3">
           <span class="block mb-0 text-lg text-inverse">{{ experience.company }}</span>

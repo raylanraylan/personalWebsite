@@ -30,21 +30,21 @@ function openModal() {
   isOpen.value = true
 }
 
-async function submitData(e) {
-  const data = new FormData(e.target);        
+async function submitData(e: Event) {
+  const data = new FormData(e.target as HTMLFormElement);        
   for (const value of data.values()) {
    if (value==='') return; 
   }
   
   try {
-    const data = new FormData(e.target);        
+    const data = new FormData(e.target as HTMLFormElement);        
     const res = await fetch('https://formspree.io/f/mblrnwjb', {
       method: 'POST',
       body: data,
       headers: { Accept: 'application/json' },
     });
     if (res.ok) {
-      e.target.reset();
+      (e.target as HTMLFormElement)?.reset();
       isSuccessSubmit.value = true;
       openModal();
     }

@@ -9,17 +9,28 @@ import {
 } from '@headlessui/vue'
 import { useI18n } from 'vue-i18n';
 import Button from '../ui/button/Button.vue';
+import type { N } from 'node_modules/tailwindcss/dist/resolve-config-QUZ9b-Gn.mjs';
 
 const { tm,locale } = useI18n();
 const isOpen = ref(false);
-const formData = ref({
+
+type Name = string;
+type Email = string;
+type Content = string;
+
+type FormDataType = {
+  name: Name;
+  email: Email;
+  content: Content;
+}
+
+const formData = ref<FormDataType>({
   name: '',
   email: '',
   content: ''
 });
-const isEmptyContent = computed(()=>
-  !formData.value.name || !formData.value.email || !formData.value.content
-);
+
+const isEmptyContent = computed(()=>formData.value.name==='' || formData.value.email==='' || formData.value.content===''||formData.value.content.trim()===''||formData.value.name.trim()===''||formData.value.email.trim()===''||!formData.value.email.includes('@'));
 
 const isSuccessSubmit = ref(false);
 
@@ -194,7 +205,7 @@ async function submitData(e: Event) {
         </div>
 
         <!-- <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md px-3.5 py-2.5 text-sm font-semibold text-inverse" type="submit" :disable="isOpen">{{ $t("contact.sendForm") }}</button> -->
-        <Button class="flex items-center justify-center mx-auto" :class="isEmptyContent?'':'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed'" type="submit" :disable="isOpen||isEmptyContent">{{ $t("contact.sendForm") }}</Button>
+        <Button class="flex items-center justify-center mx-auto" :class="isEmptyContent?'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed':'hover:cursor-pointer'" type="submit" :disable="isOpen||isEmptyContent">{{ $t("contact.sendForm") }}</Button>
       </form>
     </div>
   </section>

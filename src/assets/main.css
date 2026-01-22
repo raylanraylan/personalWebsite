@@ -515,7 +515,6 @@
     --walnut-light:25 30% 22%;
     --corkboard:var(--cork-500);
     --ink-black:var(--neutral-950);
-
   }
 
   *{
@@ -529,11 +528,18 @@
 
   section{
     padding:20px 10px;
-    @media (min-width: 768px) {
+  }
+
+  @media (min-width: 768px) {
+    section {
       padding:40px 20px;
     }
-    @media (min-width: 1280px) {
+  }
+
+  @media (min-width: 1280px) {
+    section {
       padding:80px 160px;
-    } 
+    }
   }
 }
+

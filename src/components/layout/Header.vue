@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref,watch,onMounted,defineEmits,defineProps, nextTick,useTemplateRef, onBeforeUnmount } from 'vue';
+import { ref,onMounted,defineEmits } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch,Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
-import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
 import { RouterLink } from 'vue-router';
 import { SunIcon,MoonIcon,StarIcon,ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/solid';
 import { useRoute } from 'vue-router'
@@ -31,7 +30,6 @@ const closeMenu = ref("bg-gray-500 w-full h-1 relative before:content-[''] befor
 const openMenu = ref("transparent w-full h-1 relative before:content-[''] before:block before:bg-gray-500 before:w-full before:h-1 before:absolute before:top-0 before:rotate-135 before:duration-300 after:content-[''] after:block after:bg-gray-500 after:w-full after:h-1 after:absolute after:bottom-0 after:duration-300 after:rotate-45")
 
 function toggleColor(){
-  console.log(1)
   isToggleDark.value = !isToggleDark.value
   localStorage.setItem('darkMode', String(isToggleDark.value))
   updateTheme()
@@ -122,10 +120,10 @@ document.addEventListener('scroll',()=>{
             {{ $t(item.i18nName) }}
           </DisclosureButton>
         </RouterLink>
-        <a href="https://raylanraylan.github.io/blog/" target="_blank" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium flex gap-1 items-center dark:text-white">
+        <!-- <a href="https://raylanraylan.github.io/blog/" target="_blank" class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium flex gap-1 items-center dark:text-white">
           <span>{{ $t('blog_link') }}</span>
           <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon>
-        </a>
+        </a> -->
       </div>
     </DisclosurePanel>
   </Disclosure>

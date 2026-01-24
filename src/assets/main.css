@@ -3,14 +3,15 @@
 
 @plugin 'tailwindcss-animate';
 
-@custom-variant dark (&:where(class, class *));
+/* @custom-variant dark (&:where(class, class *)); */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --breakpoint-*: initial;
   --breakpoint-sm: 568px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+  --breakpoint-xl: 1280px;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -74,10 +75,6 @@
 
 @utility text-secondary {
   color: hsl(var(--text-secondary));
-}
-
-@utility text-muted {
-  color: hsl(var(--text-muted));
 }
 
 @utility text-on-paper {
@@ -250,10 +247,7 @@
 
 @layer base {
   :root {
-    /* =====================================================
-    PRIMITIVES - Base Color Palette
-    ===================================================== */
-    
+
     /* --- Neutral (Pure Gray) --- */
     --neutral-0: 0 0% 100%;
     --neutral-50: 0 0% 98%;
@@ -378,12 +372,9 @@
     --blue-800: 201 80% 24%;
     --blue-900: 202 73% 21%;
     
- /* =====================================================
-       SEMANTIC TOKENS - Light Mode
-       ===================================================== */
 
     /* --- Background Surfaces --- */
-    --bg-base: var(--walnut-900);
+    --bg-base: var(--walnut-400);
     --bg-surface: var(--walnut-800);
     --bg-elevated: var(--walnut-700);
     --bg-overlay: var(--walnut-950);
@@ -397,7 +388,7 @@
     /* --- Text Colors --- */
     --text-primary: var(--walnut-800);
     --text-secondary: var(--walnut-600);
-    --text-muted: var(--walnut-400);
+    --text-muted: var(--walnut-900);
     --text-inverse: var(--paper-100);
     --text-on-paper: var(--walnut-700);
     --text-on-paper-muted: var(--walnut-400);
@@ -440,7 +431,7 @@
     --secondary: var(--walnut-700);
     --secondary-foreground: var(--text-primary);
 
-    --muted: var(--walnut-700);
+    --muted: var(--text-muted);
     --muted-foreground: var(--text-muted);
 
     --accent: var(--brand-accent);
@@ -460,12 +451,8 @@
 
     --radius: 0.25rem;
   }
-  .dark {
-  /* =====================================================
-    SEMANTIC TOKENS - Dark Mode (Default)
-    Use these in components!
-    ===================================================== */
 
+  .dark {
     /* --- Background Surfaces --- */
     --bg-base: var(--walnut-900);
     --bg-surface: var(--walnut-800);

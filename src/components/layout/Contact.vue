@@ -100,7 +100,7 @@ async function submitData(e: Event) {
 
               <div class="mt-4 flex justify-center">
                 <button type="button"
-                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
+                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-primary dark:text-white"
                   @click="closeModal">
                   {{ $t('contact.submitResult.close') }}
                 </button>
@@ -111,17 +111,17 @@ async function submitData(e: Event) {
               <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
                 {{ $t('contact.submitResult.fail.title') }}
               </DialogTitle>
-              <div class="mt-2">
+              <div class="mt-2 flex flex-col">
                 <p class="text-sm text-gray-500">
                   {{ $t('contact.submitResult.fail.content') }}
                 </p>
                 <a href="mailto:startup9043672@gmail.com"
-                  class="mt-2 text-lg text-center block">startup9043672@gmail.com</a>
+                  class="mt-2 text-lg text-center text-paper-label">startup9043672@gmail.com</a>
               </div>
 
               <div class="mt-4 flex justify-center">
                 <button type="button"
-                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
+                  class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-primary dark:text-white"
                   @click="closeModal">
                   {{ $t('contact.submitResult.close') }}
                 </button>

@@ -229,7 +229,7 @@
 
   /* --- Shadows --- */
   --shadow-noir: 0 20px 60px -15px hsl(var(--walnut-800) / 0.15);
-  --shadow-glow: 0 0 40px 20px hsl(var(--effect-glow) / 0.2);
+  --shadow-glow: 0 0 20px 20px hsl(var(--effect-glow) / 0.2);
   --shadow-red: 0 0 20px 20px hsl(var(--effect-red-glow) / 0.4);
 }
 
@@ -333,6 +333,10 @@
   background-color: hsl(var(--cork-color));
 }
 
+@utility bg-brand-highlight{
+  background-color: hsl(var(--brand-primary));
+}
+
 @utility header-underline-border {
   background-color: hsl(var(--primary-foreground-color));
 }
@@ -364,10 +368,6 @@
 
 @utility border-danger {
   border-color: hsl(var(--status-danger));
-}
-
-@utility border-base {
-  border-color: hsl(var(--border));
 }
 
 @utility status-success {

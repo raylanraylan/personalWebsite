@@ -33,22 +33,22 @@ const aboutItems = [
         </CardTitle>
         <CardDescription>
           <div class="grid grid-cols-2 gap-4">
-            <div v-for="item in aboutItems" :key="item" :class="item==='name'? 'col-span-2' : ''">
-              <h4 class="text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{$t('about.colon')}}</h4>
-              <p class="text-lg text-on-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
+            <div v-for="item in aboutItems" :key="item" :class="item === 'name' ? 'col-span-2' : ''">
+              <h4 class="text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{ $t('about.colon') }}</h4>
+              <p class="text-lg text-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
             </div>
           </div>
         </CardDescription>
       </CardHeader>
-      <hr class="h-px border-dashed bg-surface my-5"/>
+      <hr class="h-px border-dashed bg-surface my-5" />
       <CardContent class="p-0">
-        <h4 class="text-gray-500">{{ $t('about.description.title') }}{{$t('about.colon')}}</h4>
-        <p class="text-lg text-on-paper-label">{{ $t('about.description.content') }}</p>
+        <h4 class="text-gray-500">{{ $t('about.description.title') }}{{ $t('about.colon') }}</h4>
+        <p class="text-lg text-paper-label">{{ $t('about.description.content') }}</p>
       </CardContent>
-      <hr class="h-px border-dashed bg-surface my-5"/>
+      <hr class="h-px border-dashed bg-surface my-5" />
       <CardFooter class="justify-between p-0 text-xs  text-gray-500">
         <span>{{ props.fileNumber }}</span>
-        <span>{{$t('about.footer.updated')}}{{$t('about.colon')}}{{ updatedDate }}</span>
+        <span>{{ $t('about.footer.updated') }}{{ $t('about.colon') }}{{ updatedDate }}</span>
       </CardFooter>
     </Card>
   </section>

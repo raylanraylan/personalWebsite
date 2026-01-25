@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref,onMounted,defineEmits } from 'vue';
+import { ref,onMounted,defineEmits,provide } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch,Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
 import { RouterLink } from 'vue-router';
 import { SunIcon,MoonIcon,StarIcon,ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/solid';
@@ -60,7 +60,7 @@ document.addEventListener('scroll',()=>{
 
 <template>
   <Disclosure as="nav"  v-slot="{ open }">    
-    <div ref="headerContainer" class="mx-auto px-[5vw] py-5" :class="headerPosition>10?'bg-base':'bg-transparent'">
+    <div ref="headerContainer" class="mx-auto px-[5vw] py-5" :class="headerPosition>10?'bg-primary':'bg-transparent'">
       <div class="relative flex h-16 items-center justify-between">
         <h1 class="flex flex-1 items-center">
           <a href="#hero">
@@ -75,7 +75,7 @@ document.addEventListener('scroll',()=>{
           <div class="hidden sm:block"></div>
         </DisclosureButton>
         <div class="flex space-x-4 whitespace-nowrap">
-            <a v-for="item in navigation" :key="item.i18nName" :href="item.path" class="p-2 text-sm text-muted-foreground duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-px hover:after:bg-paper hover:after:block hover:after:duration-700">{{ $t(item.i18nName) }}</a>
+            <a v-for="item in navigation" :key="item.i18nName" :href="item.path" class="p-2 text-sm text-paper-muted duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-px hover:after:header-underline-border hover:after:block hover:after:duration-700">{{ $t(item.i18nName) }}</a>
             <!-- <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
               <span>{{ $t('blog_link') }}</span> -->
               <!-- <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon> -->

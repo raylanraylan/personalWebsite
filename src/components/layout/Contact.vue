@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref,computed } from 'vue'
+import { ref, computed } from 'vue'
 import {
   TransitionRoot,
   TransitionChild,
@@ -9,9 +9,8 @@ import {
 } from '@headlessui/vue'
 import { useI18n } from 'vue-i18n';
 import Button from '../ui/button/Button.vue';
-import type { N } from 'node_modules/tailwindcss/dist/resolve-config-QUZ9b-Gn.mjs';
 
-const { tm,locale } = useI18n();
+const { tm, locale } = useI18n();
 const isOpen = ref(false);
 
 type Name = string;
@@ -30,7 +29,7 @@ const formData = ref<FormDataType>({
   content: ''
 });
 
-const isEmptyContent = computed(()=>formData.value.name==='' || formData.value.email==='' || formData.value.content===''||formData.value.content.trim()===''||formData.value.name.trim()===''||formData.value.email.trim()===''||!formData.value.email.includes('@'));
+const isEmptyContent = computed(() => formData.value.name === '' || formData.value.email === '' || formData.value.content === '' || formData.value.content.trim() === '' || formData.value.name.trim() === '' || formData.value.email.trim() === '' || !formData.value.email.includes('@'));
 
 const isSuccessSubmit = ref(false);
 
@@ -42,13 +41,13 @@ function openModal() {
 }
 
 async function submitData(e: Event) {
-  const data = new FormData(e.target as HTMLFormElement);        
+  const data = new FormData(e.target as HTMLFormElement);
   for (const value of data.values()) {
-   if (value==='') return; 
+    if (value === '') return;
   }
-  
+
   try {
-    const data = new FormData(e.target as HTMLFormElement);        
+    const data = new FormData(e.target as HTMLFormElement);
     const res = await fetch('https://formspree.io/f/mblrnwjb', {
       method: 'POST',
       body: data,
@@ -76,41 +75,22 @@ async function submitData(e: Event) {
 }
 </script>
 <template>
-   <TransitionRoot appear :show="isOpen" as="template">
+  <TransitionRoot appear :show="isOpen" as="template">
     <Dialog as="div" @close="closeModal" class="relative z-10">
-      <TransitionChild
-        as="template"
-        enter="duration-300 ease-out"
-        enter-from="opacity-0"
-        enter-to="opacity-100"
-        leave="duration-200 ease-in"
-        leave-from="opacity-100"
-        leave-to="opacity-0"
-      >
+      <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
+        leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
         <div class="fixed inset-0 bg-black/25" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
-        <div
-          class="flex min-h-full items-center justify-center p-4 text-center"
-        >
-          <TransitionChild
-            as="template"
-            enter="duration-300 ease-out"
-            enter-from="opacity-0 scale-95"
-            enter-to="opacity-100 scale-100"
-            leave="duration-200 ease-in"
-            leave-from="opacity-100 scale-100"
-            leave-to="opacity-0 scale-95"
-          >
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+          <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
+            enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-95">
             <DialogPanel v-if="isSuccessSubmit"
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
-            >
-              <DialogTitle
-                as="h3"
-                class="text-lg font-medium leading-6 text-gray-900"
-              >
-              {{ $t('contact.submitResult.success.title') }}
+              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
+                {{ $t('contact.submitResult.success.title') }}
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
@@ -119,38 +99,31 @@ async function submitData(e: Event) {
               </div>
 
               <div class="mt-4 flex justify-center">
-                <button
-                  type="button"
+                <button type="button"
                   class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
-                  @click="closeModal"
-                >
-                {{ $t('contact.submitResult.close')}}
+                  @click="closeModal">
+                  {{ $t('contact.submitResult.close') }}
                 </button>
               </div>
             </DialogPanel>
             <DialogPanel v-else
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
-            >
-              <DialogTitle
-                as="h3"
-                class="text-lg font-medium leading-6 text-gray-900"
-              >
+              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
                 {{ $t('contact.submitResult.fail.title') }}
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
                   {{ $t('contact.submitResult.fail.content') }}
                 </p>
-                <a href="mailto:startup9043672@gmail.com" class="mt-2 text-lg text-center block">startup9043672@gmail.com</a>
+                <a href="mailto:startup9043672@gmail.com"
+                  class="mt-2 text-lg text-center block">startup9043672@gmail.com</a>
               </div>
 
               <div class="mt-4 flex justify-center">
-                <button
-                  type="button"
+                <button type="button"
                   class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-white dark:text-gray-900"
-                  @click="closeModal"
-                >
-                  {{ $t('contact.submitResult.close')}}
+                  @click="closeModal">
+                  {{ $t('contact.submitResult.close') }}
                 </button>
               </div>
             </DialogPanel>
@@ -159,53 +132,71 @@ async function submitData(e: Event) {
       </div>
     </Dialog>
   </TransitionRoot>
-  
-  <section class="bg-paper">
-    <h2 class="text-3xl text-inverse text-center mb-3">{{ $t("contact.title") }}</h2>
-    <h3 class="text-inverse text-center mb-3">{{ $t("contact.description") }}</h3>
+
+  <section>
+    <h2 class="text-3xl text-paper text-center mb-3">{{ $t("contact.title") }}</h2>
+    <h3 class="text-primary text-center mb-3">{{ $t("contact.description") }}</h3>
     <div class="flex gap-5">
-      <div class="p-10 bg-paper-dark relative rotate-1 shadow-[3px_3px_3px_0px_rgba(90,40,15,1)]">
-        <div class="w-5 h-5 rounded-xl bg-red-400 absolute top-3 left-[40%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]"></div>
-        <h4 class="mb-5 text-on-paper text-xl text-center">{{ $t("contact.contactMethods.title") }}</h4>
-        <div v-for="method in tm('contact.contactMethods.items')" class="border-l-4 pl-3 mb-5 last:mb-0">
-          <h5 class="text-on-paper-muted text-sm">{{ method.method }}</h5>
-          <a :href="method.method==='Email'? `mailto:${method.value}` : method.value" target="_blank" rel="noopener noreferrer" class="underline text-on-paper">
+      <div class="p-10 bg-paper relative rotate-1 shadow-[3px_3px_3px_0px_rgba(90,40,15,1)]">
+        <div
+          class="w-5 h-5 rounded-xl bg-red-400 absolute top-3 left-[40%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
+        </div>
+        <h4 class="mb-5 text-paper-label text-xl text-center">{{ $t("contact.contactMethods.title") }}</h4>
+        <div v-for="method in tm('contact.contactMethods.items')" class="border-l-4 border-default pl-3 mb-5 last:mb-0">
+          <h5 class="text-paper-muted text-sm">{{ method.method }}</h5>
+          <a :href="method.method === 'Email' ? `mailto:${method.value}` : method.value" target="_blank"
+            rel="noopener noreferrer" class="underline text-paper-label">
             {{ method.value }}
           </a>
         </div>
       </div>
-      <form @submit.prevent="submitData" class="p-10 w-full space-y-5 bg-paper-dark relative shadow-[5px_5px_5px_0px_rgba(90,40,15,1)]">
-        <div class="w-5 h-5 rounded-xl bg-red-400 absolute top-2 left-[10%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]"></div>
-        <div class="w-5 h-5 rounded-xl bg-red-400 absolute -top-2 left-[90%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]"></div>
+      <form @submit.prevent="submitData"
+        class="p-10 w-full space-y-5 bg-paper relative shadow-[5px_5px_5px_0px_rgba(90,40,15,1)]">
+        <div
+          class="w-5 h-5 rounded-xl bg-red-400 absolute top-2 left-[10%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
+        </div>
+        <div
+          class="w-5 h-5 rounded-xl bg-red-400 absolute -top-2 left-[90%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
+        </div>
 
-        <h4 class="mb-5 text-on-paper text-xl text-center">{{ $t("contact.formTitle") }}</h4>
+        <h4 class="mb-5 text-inverse text-xl text-center">{{ $t("contact.formTitle") }}</h4>
         <div class="sm:w-72 mx-auto">
-          <label for="name" class="block text-sm text-on-paper-muted font-medium leading-6">{{ $t("contact.name") }}</label>
+          <label for="name" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.name")
+          }}</label>
           <div class="mt-2">
-            <div class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
-              <input type="text" name="name" id="name" autocomplete="name" v-model="formData.name" class="block flex-1 border-0 bg-transparent text-on-paper p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6"/>
+            <div
+              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
+              <input type="text" name="name" id="name" autocomplete="name" v-model="formData.name"
+                class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
             </div>
           </div>
         </div>
 
         <div class="sm:w-72 mx-auto">
-          <label for="email" class="block text-sm text-on-paper-muted font-medium leading-6">{{ $t("contact.email") }}</label>
+          <label for="email" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.email")
+          }}</label>
           <div class="mt-2">
-            <div class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
-              <input type="email" name="email" id="email" v-model="formData.email" class="block flex-1 border-0 bg-transparent text-on-paper p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            <div
+              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
+              <input type="email" name="email" id="email" v-model="formData.email"
+                class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
             </div>
           </div>
         </div>
 
         <div class="sm:w-72 mx-auto">
-          <label for="content" class="block text-sm text-on-paper-muted font-medium leading-6">{{ $t("contact.content") }}</label>
+          <label for="content" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.content")
+          }}</label>
           <div class="mt-2">
-            <textarea id="content" name="content" rows="3" v-model="formData.content" class="block w-full rounded-md border-0 p-2 text-on-paper shadow-xs ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            <textarea id="content" name="content" rows="3" v-model="formData.content"
+              class="block w-full rounded-md border-0 p-2 text-ink-black shadow-xs ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />
           </div>
         </div>
 
         <!-- <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md px-3.5 py-2.5 text-sm font-semibold text-inverse" type="submit" :disable="isOpen">{{ $t("contact.sendForm") }}</button> -->
-        <Button class="flex items-center justify-center mx-auto" :class="isEmptyContent?'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed':'hover:cursor-pointer'" type="submit" :disable="isOpen||isEmptyContent">{{ $t("contact.sendForm") }}</Button>
+        <Button class="flex items-center justify-center mx-auto"
+          :class="isEmptyContent ? 'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed' : 'bg-brand-highlight text-inverse hover:shadow-glow hover:cursor-pointer'"
+          type="submit" :disable="isOpen || isEmptyContent">{{ $t("contact.sendForm") }}</Button>
       </form>
     </div>
   </section>

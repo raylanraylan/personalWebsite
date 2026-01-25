@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref, nextTick } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { RouterView } from 'vue-router'
 import { useRoute } from 'vue-router';
 import Header from '@/components/layout/Header.vue'
@@ -13,7 +13,6 @@ const runProcess = setInterval(() => {
     process.value += Math.floor(Math.random() * 2 + 2)
   }
 }, 100)
-
 
 const isLoading = ref(true);
 const isShowContent = ref(false)

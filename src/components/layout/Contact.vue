@@ -136,8 +136,8 @@ async function submitData(e: Event) {
   <section>
     <h2 class="text-3xl text-paper text-center mb-3">{{ $t("contact.title") }}</h2>
     <h3 class="text-primary text-center mb-3">{{ $t("contact.description") }}</h3>
-    <div class="flex flex-col sm:flex-row gap-5">
-      <div class="p-10 bg-paper relative rotate-1 shadow-[3px_3px_3px_0px_rgba(90,40,15,1)]">
+    <div class="flex flex-col sm:flex-row gap-5 lg:justify-center">
+      <div class="p-3 lg:p-10 bg-paper relative rotate-1 shadow-[3px_3px_3px_0px_rgba(90,40,15,1)]">
         <div
           class="w-5 h-5 rounded-xl bg-red-400 absolute top-3 left-[40%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
         </div>
@@ -151,7 +151,7 @@ async function submitData(e: Event) {
         </div>
       </div>
       <form @submit.prevent="submitData"
-        class="p-10 w-full space-y-5 bg-paper relative shadow-[5px_5px_5px_0px_rgba(90,40,15,1)]">
+        class="p-3 w-full lg:p-10 bg-paper relative lg:w-96 shadow-[5px_5px_5px_0px_rgba(90,40,15,1)]">
         <div
           class="w-5 h-5 rounded-xl bg-red-400 absolute top-2 left-[10%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
         </div>
@@ -160,31 +160,31 @@ async function submitData(e: Event) {
         </div>
 
         <h4 class="mb-5 text-inverse text-xl text-center">{{ $t("contact.formTitle") }}</h4>
-        <div class="sm:w-72 mx-auto">
+        <div class="w-full lg:w-72 mx-auto">
           <label for="name" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.name")
             }}</label>
           <div class="mt-2">
             <div
-              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
+              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400">
               <input type="text" name="name" id="name" autocomplete="name" v-model="formData.name"
                 class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
             </div>
           </div>
         </div>
 
-        <div class="sm:w-72 mx-auto">
+        <div class="w-full lg:w-72 mx-auto">
           <label for="email" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.email")
             }}</label>
           <div class="mt-2">
             <div
-              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
+              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400">
               <input type="email" name="email" id="email" v-model="formData.email"
                 class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
             </div>
           </div>
         </div>
 
-        <div class="sm:w-72 mx-auto">
+        <div class="w-full lg:w-72 mx-auto">
           <label for="content" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.content")
             }}</label>
           <div class="mt-2">

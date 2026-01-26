@@ -136,7 +136,7 @@ async function submitData(e: Event) {
   <section>
     <h2 class="text-3xl text-paper text-center mb-3">{{ $t("contact.title") }}</h2>
     <h3 class="text-primary text-center mb-3">{{ $t("contact.description") }}</h3>
-    <div class="flex gap-5">
+    <div class="flex flex-col sm:flex-row gap-5">
       <div class="p-10 bg-paper relative rotate-1 shadow-[3px_3px_3px_0px_rgba(90,40,15,1)]">
         <div
           class="w-5 h-5 rounded-xl bg-red-400 absolute top-3 left-[40%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
@@ -162,7 +162,7 @@ async function submitData(e: Event) {
         <h4 class="mb-5 text-inverse text-xl text-center">{{ $t("contact.formTitle") }}</h4>
         <div class="sm:w-72 mx-auto">
           <label for="name" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.name")
-          }}</label>
+            }}</label>
           <div class="mt-2">
             <div
               class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
@@ -174,7 +174,7 @@ async function submitData(e: Event) {
 
         <div class="sm:w-72 mx-auto">
           <label for="email" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.email")
-          }}</label>
+            }}</label>
           <div class="mt-2">
             <div
               class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400 sm:max-w-md">
@@ -186,7 +186,7 @@ async function submitData(e: Event) {
 
         <div class="sm:w-72 mx-auto">
           <label for="content" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.content")
-          }}</label>
+            }}</label>
           <div class="mt-2">
             <textarea id="content" name="content" rows="3" v-model="formData.content"
               class="block w-full rounded-md border-0 p-2 text-ink-black shadow-xs ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />

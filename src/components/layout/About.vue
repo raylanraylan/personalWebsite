@@ -25,28 +25,28 @@ const aboutItems = [
 </script>
 <template>
   <section class="bg-[linear-gradient(180deg, hsl(0 0% 1% / 1), transparent)]">
-    <h2 class="text-center text-3xl mb-10">{{ $t('profile_section') }}</h2>
-    <Card class="bg-paper p-12 relative">
+    <h2 class="text-center text-xl mb-3 sm:text-3xl sm:mb-10">{{ $t('profile_section') }}</h2>
+    <Card class="bg-paper p-3 sm:p-12 relative">
       <CardHeader class="p-0">
         <CardTitle class="absolute right-[10px] top-[100px] rotate-25 opacity-70">
-          <h3 class="text-5xl status-danger p-4 border-2 border-danger uppercase">{{ $t('about.stamp') }}</h3>
+          <h3 class="sm:text-5xl status-danger p-4 border-2 border-danger uppercase">{{ $t('about.stamp') }}</h3>
         </CardTitle>
         <CardDescription>
-          <div class="grid grid-cols-2 gap-4">
-            <div v-for="item in aboutItems" :key="item" :class="item === 'name' ? 'col-span-2' : ''">
-              <h4 class="text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{ $t('about.colon') }}</h4>
-              <p class="text-lg text-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div v-for="item in aboutItems" :key="item" :class="item === 'name' ? 'sm:col-span-2' : ''">
+              <h4 class="text-xs sm:text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{ $t('about.colon') }}</h4>
+              <p class="text-sm sm:text-lg text-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
             </div>
           </div>
         </CardDescription>
       </CardHeader>
       <hr class="h-px border-dashed bg-surface my-5" />
       <CardContent class="p-0">
-        <h4 class="text-gray-500">{{ $t('about.description.title') }}{{ $t('about.colon') }}</h4>
-        <p class="text-lg text-paper-label">{{ $t('about.description.content') }}</p>
+        <h4 class="text-xs sm:text-base text-gray-500">{{ $t('about.description.title') }}{{ $t('about.colon') }}</h4>
+        <p class="text-sm sm:text-lg text-paper-label">{{ $t('about.description.content') }}</p>
       </CardContent>
       <hr class="h-px border-dashed bg-surface my-5" />
-      <CardFooter class="justify-between p-0 text-xs  text-gray-500">
+      <CardFooter class="justify-between p-0 text-[10px] sm:text-xs text-gray-500">
         <span>{{ props.fileNumber }}</span>
         <span>{{ $t('about.footer.updated') }}{{ $t('about.colon') }}{{ updatedDate }}</span>
       </CardFooter>

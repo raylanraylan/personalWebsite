@@ -23,7 +23,7 @@ document.addEventListener('mousemove', mouseMoveHandler)
 
 <template>
   <section ref="lightingSection"
-    class="w-full h-screen bg-[url(@/assets/desk.jpeg)] bg-cover bg-center bg-no-repeat relative">
+    class="w-full sm:h-screen bg-[url(@/assets/desk.jpeg)] bg-contain sm:bg-cover bg-center bg-no-repeat relative">
     <div class="absolute inset-0 pointer-events-none transition-all duration-75 
       bg-[linear-gradient(180deg,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.85)_100%)]
       dark:bg-[radial-gradient(200px_at_var(--x)_var(--y),transparent_0%,rgba(0,0,0,0.85)_100%)]"
@@ -38,7 +38,8 @@ document.addEventListener('mousemove', mouseMoveHandler)
           <a :href="quickOpen">{{ $t("hero.quickOpen") }}</a>
         </Button>
       </div>
-      <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-xs sm:text-base">{{ $t("hero.useFile") }}
+      <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-xs sm:text-base">{{
+        $t("hero.useFile") }}
       </p>
     </div>
   </section>

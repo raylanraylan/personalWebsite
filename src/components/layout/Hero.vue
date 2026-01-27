@@ -33,12 +33,12 @@ document.addEventListener('mousemove', mouseMoveHandler)
       <div>
         <h1 class="text-xs sm:text-base text-brand-highlight">{{ props.fileNumber }}</h1>
         <h2 class="mt-5 text-[1rem] text-primary sm:text-[3rem] leading-tight">{{ $t("hero.fileType") }}</h2>
-        <p class="mb-10 text-paper-muted">{{ $t("hero.fileDescription") }}</p>
-        <Button class="mb-3 bg-overlay text-brand-highlight hover:shadow-glow">
+        <p class="mb-10 text-xs sm:text-base text-paper-muted">{{ $t("hero.fileDescription") }}</p>
+        <Button class="mb-3 bg-muted text-brand-highlight hover:shadow-glow">
           <a :href="quickOpen">{{ $t("hero.quickOpen") }}</a>
         </Button>
       </div>
-      <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-sm">{{ $t("hero.useFile") }}
+      <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-xs sm:text-base">{{ $t("hero.useFile") }}
       </p>
     </div>
   </section>

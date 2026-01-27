@@ -10,14 +10,14 @@ const { tm } = useI18n();
 
 <template>
   <section class="relative bg-cork">
-    <h2 class="text-center text-3xl mb-10">{{ $t('experienceTimeline.title') }}</h2>
-    <Card class="block w-[250px] sm:w-[450px] bg-paper rounded-lg mb-10 shadow-xl shadow-amber-800/50 last:mb-0"
-      :class="Number(index) % 2 === 0 ? 'mx-auto sm:mr-auto -rotate-2' : 'mx-auto sm:ml-auto rotate-2'"
+    <h2 class="text-center text-xl mb-5 sm:text-3xl sm:mb-10">{{ $t('experienceTimeline.title') }}</h2>
+    <Card class="block w-[300px] md:w-[400px] bg-paper rounded-lg mb-10 shadow-xl shadow-amber-800/50 last:mb-0"
+      :class="Number(index) % 2 === 0 ? 'mx-auto md:mr-auto md:ml-0 -rotate-2' : 'mx-auto md:ml-auto md:mr-0 rotate-2'"
       v-for="(experience, index) in tm('experienceTimeline.items')" :key="index">
       <CardHeader>
         <CardTitle class="mb-3">
-          <span class="block mb-0 text-lg text-inverse">{{ experience.company }}</span>
-          <span class="block mb-1 text-sm text-paper-label">{{ experience.title }}</span>
+          <span class="block mb-0 text-base sm:text-lg text-inverse">{{ experience.company }}</span>
+          <span class="block mb-1 text-sm sm:text-base text-paper-label">{{ experience.title }}</span>
           <span class="block w-fit px-2 py-1 text-xs text-primary rounded bg-surface">{{ experience.timeRange }}</span>
         </CardTitle>
         <hr class="h-px border-dashed bg-surface" />
@@ -25,8 +25,8 @@ const { tm } = useI18n();
       <CardContent>
         <ul class="pl-5 list-[square] space-y-2">
           <li v-for="(workItem, workIndex) in experience.work" :key="workIndex" class="text-paper-label">
-            <h3>{{ workItem.title }}</h3>
-            <p>{{ workItem.content }}</p>
+            <h3 class="text-base sm:text-sm text-paper-label">{{ workItem.title }}</h3>
+            <p class="text-sm sm:text-base text-paper-label">{{ workItem.content }}</p>
           </li>
         </ul>
       </CardContent>

@@ -134,14 +134,15 @@ async function submitData(e: Event) {
   </TransitionRoot>
 
   <section>
-    <h2 class="text-3xl text-paper text-center mb-3">{{ $t("contact.title") }}</h2>
-    <h3 class="text-primary text-center mb-3">{{ $t("contact.description") }}</h3>
+    <h2 class="text-xl sm:text-3xl text-paper text-center mb-3">{{ $t("contact.title") }}</h2>
+    <h3 class="text-xs sm:text-base text-primary text-center mb-3">{{ $t("contact.description") }}</h3>
     <div class="flex flex-col sm:flex-row gap-5 lg:justify-center">
       <div class="p-3 lg:p-10 bg-paper relative rotate-1 shadow-[3px_3px_3px_0px_rgba(90,40,15,1)]">
         <div
-          class="w-5 h-5 rounded-xl bg-red-400 absolute top-3 left-[40%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
+          class="w-5 h-5 rounded-xl bg-red-400 absolute top-0 sm:top-3 left-[40%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
         </div>
-        <h4 class="mb-5 text-paper-label text-xl text-center">{{ $t("contact.contactMethods.title") }}</h4>
+        <h4 class="mb-2 sm:mb-5 text-paper-label text-base sm:text-xl text-center">{{ $t("contact.contactMethods.title")
+          }}</h4>
         <div v-for="method in tm('contact.contactMethods.items')" class="border-l-4 border-default pl-3 mb-5 last:mb-0">
           <h5 class="text-paper-muted text-sm">{{ method.method }}</h5>
           <a :href="method.method === 'Email' ? `mailto:${method.value}` : method.value" target="_blank"
@@ -159,44 +160,48 @@ async function submitData(e: Event) {
           class="w-5 h-5 rounded-xl bg-red-400 absolute -top-2 left-[90%] shadow-[1px_1px_0_0_rgb(198,70,70)] before:content-[''] before:block before:w-full before:h-full before:rounded-xl before:shadow-[-1px_-1px_0_0_rgba(255,255,255,.3)]">
         </div>
 
-        <h4 class="mb-5 text-inverse text-xl text-center">{{ $t("contact.formTitle") }}</h4>
-        <div class="w-full lg:w-72 mx-auto">
-          <label for="name" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.name")
+        <h4 class="mb-2 sm:mb-5 text-inverse text-base sm:text-xl text-center">{{ $t("contact.formTitle") }}</h4>
+        <div class="flex flex-col gap-3">
+
+
+          <div class="w-full lg:w-72 mx-auto">
+            <label for="name" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.name")
             }}</label>
-          <div class="mt-2">
-            <div
-              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400">
-              <input type="text" name="name" id="name" autocomplete="name" v-model="formData.name"
-                class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            <div class="mt-2">
+              <div
+                class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400">
+                <input type="text" name="name" id="name" autocomplete="name" v-model="formData.name"
+                  class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="w-full lg:w-72 mx-auto">
-          <label for="email" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.email")
+          <div class="w-full lg:w-72 mx-auto">
+            <label for="email" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.email")
             }}</label>
-          <div class="mt-2">
-            <div
-              class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400">
-              <input type="email" name="email" id="email" v-model="formData.email"
-                class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            <div class="mt-2">
+              <div
+                class="flex rounded-md shadow-xs ring-1 ring-inset ring-gray-300 bg-white focus-within:ring-2 focus-within:ring-inset focus-within:ring-amber-400">
+                <input type="email" name="email" id="email" v-model="formData.email"
+                  class="block flex-1 border-0 bg-transparent text-ink-black p-2 placeholder:text-gray-400 focus:ring-0 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="w-full lg:w-72 mx-auto">
-          <label for="content" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.content")
+          <div class="w-full lg:w-72 mx-auto">
+            <label for="content" class="block text-sm text-paper-muted font-medium leading-6">{{ $t("contact.content")
             }}</label>
-          <div class="mt-2">
-            <textarea id="content" name="content" rows="3" v-model="formData.content"
-              class="block w-full rounded-md border-0 p-2 text-ink-black shadow-xs ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            <div class="mt-2">
+              <textarea id="content" name="content" rows="3" v-model="formData.content"
+                class="block w-full rounded-md border-0 p-2 text-ink-black shadow-xs ring-1 ring-inset ring-gray-300 bg-white placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus-visible:outline-0 sm:text-sm sm:leading-6" />
+            </div>
           </div>
-        </div>
 
-        <!-- <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md px-3.5 py-2.5 text-sm font-semibold text-inverse" type="submit" :disable="isOpen">{{ $t("contact.sendForm") }}</button> -->
-        <Button class="flex items-center justify-center mx-auto"
-          :class="isEmptyContent ? 'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed' : 'bg-brand-highlight text-inverse hover:shadow-glow hover:cursor-pointer'"
-          type="submit" :disable="isOpen || isEmptyContent">{{ $t("contact.sendForm") }}</Button>
+          <!-- <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md px-3.5 py-2.5 text-sm font-semibold text-inverse" type="submit" :disable="isOpen">{{ $t("contact.sendForm") }}</button> -->
+          <Button class="flex items-center justify-center mx-auto"
+            :class="isEmptyContent ? 'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed' : 'bg-brand-highlight text-inverse hover:shadow-glow hover:cursor-pointer'"
+            type="submit" :disable="isOpen || isEmptyContent">{{ $t("contact.sendForm") }}</Button>
+        </div>
       </form>
     </div>
   </section>

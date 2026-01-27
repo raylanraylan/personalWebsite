@@ -73,7 +73,7 @@ document.addEventListener('scroll', () => {
         <!-- Desktop menu -->
         <div class="hidden sm:flex space-x-4 whitespace-nowrap">
           <a v-for="item in navigation" :key="item.i18nName" :href="item.path"
-            class="p-2 text-sm text-paper-muted duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-px hover:after:header-underline-border hover:after:block hover:after:duration-700">{{
+            class="p-2 text-sm text-paper duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-px hover:after:header-underline-border hover:after:block hover:after:duration-700">{{
               $t(item.i18nName) }}</a>
           <!-- <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
               <span>{{ $t('blog_link') }}</span> -->

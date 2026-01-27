@@ -8,12 +8,13 @@ const { tm } = useI18n();
 </script>
 <template>
   <section class="relative bg-surface">
-    <h2 class="text-center text-3xl mb-10">{{ $t('project.title') }}</h2>
-    <div class="grid gap-10 lg:grid-cols-2">
+    <h2 class="text-center mb-3 text-xl sm:text-3xl sm:mb-10">{{ $t('project.title') }}</h2>
+    <div class="grid gap-3 sm:gap-10 lg:grid-cols-2">
       <Card v-for="project in tm('project.items')" :key="project.title"
         class="max-w-4xl bg-manila rounded-lg shadow-noir transition-all duration-500 opacity-100 transform last:mb-0 hover:-translate-y-2 hover:border-spotlight-yellow hover:border-2">
-        <CardHeader>
-          <CardTitle class="text-lg text-ink-black group-hover:text-alert-red">{{ project.title }}</CardTitle>
+        <CardHeader class="p-3 sm:p-6">
+          <CardTitle class="text-base sm:text-lg text-ink-black group-hover:text-alert-red">{{ project.title }}
+          </CardTitle>
           <CardDescription>
             <p class="text-paper-label">{{ project.description }}</p>
             <br />

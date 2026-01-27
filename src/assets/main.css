@@ -248,6 +248,9 @@
 @layer base {
   *{
     font-family: 'Noto Serif TC', 'Cactus Classical Serif', serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   body {
@@ -423,4 +426,3 @@
     background-color: hsl(var(--brand-accent) / 0.9);
   }
 }
-

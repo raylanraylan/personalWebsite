@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, defineProps, inject } from 'vue';
 import Button from '../ui/button/Button.vue';
-const imgUrl = new URL('../assets/desk.jpeg', import.meta.url).href
+// const bgImgUrl = bg-[url(./src/assets/desk.jpeg)] ;
+const imgUrl = new URL('../../assets/desk.jpeg', import.meta.url).href
 const lightingSection = ref<HTMLElement | null>(null);
 const lightPosition = ref<{ x: string, y: string }>({ x: '0px', y: '0px' });
 
@@ -22,8 +23,7 @@ document.addEventListener('mousemove', mouseMoveHandler)
 </script>
 
 <template>
-  <section ref="lightingSection"
-    class="w-full sm:h-screen bg-[url(./src/assets/desk.jpeg)] bg-contain sm:bg-cover bg-center bg-no-repeat relative"
+  <section ref="lightingSection" class="w-full sm:h-screen bg-contain sm:bg-cover bg-center bg-no-repeat relative"
     :class="`bg-[url(${imgUrl})]`">
     <div class="absolute inset-0 pointer-events-none transition-all duration-75 
       bg-[linear-gradient(180deg,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.85)_100%)]

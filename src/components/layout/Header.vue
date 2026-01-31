@@ -3,6 +3,10 @@ import { ref, onMounted, defineEmits } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch } from '@headlessui/vue';
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/solid';
 import { useI18n } from 'vue-i18n'
+import { Slider } from '../ui/slider'
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from 'reka-ui';
+import { Volume2, VolumeOff } from 'lucide-vue-next';
+import { playAmbientNoise, stopAmbientNoise } from '@/composables/useAmbientSound';
 
 const { locale } = useI18n({ useScope: 'global' })
 const emit = defineEmits<{
@@ -10,6 +14,7 @@ const emit = defineEmits<{
   addStarMapRender: [star: object]
 }>()
 
+const sliderValue = ref<number[]>([0]);
 const toggleLanguage = ref<boolean>(false);
 const isToggleDark = ref<boolean>(true);
 const logoName = ref('logo_name');
@@ -37,10 +42,9 @@ const updateTheme = () => {
     document.documentElement.classList.remove('dark')
   }
 }
-
 onMounted(() => {
   isToggleDark.value = localStorage.getItem('darkMode') === "true" ? true : false
-  updateTheme()
+  updateTheme();
 })
 
 const headerPosition = ref<number>(0);
@@ -82,6 +86,20 @@ document.addEventListener('scroll', () => {
         </div>
         <!-- buttons -->
         <div class="flex gap-3 flex-1 items-center justify-end">
+          <div class="flex gap-2 items-center">
+            <div>
+              <Volume2 v-if="sliderValue[0] > 0" @click="sliderValue = [0]; stopAmbientNoise();"
+                class="cursor-pointer" />
+              <VolumeOff v-else @click="sliderValue = [100]; playAmbientNoise(sliderValue[0])" class="cursor-pointer" />
+            </div>
+            <!-- <SliderRoot v-model="sliderValue" class="relative flex items-center w-full h-2" :default-value="[50]"
+              orientation="horizontal">
+              <SliderTrack class="relative header-underline-border w-[100px] h-2 rounded-full">
+                <SliderRange class="absolute bg-paper" />
+              </SliderTrack>
+              <SliderThumb class="block w-4 h-4 rounded-full header-underline-border" />
+            </SliderRoot> -->
+          </div>
           <Switch v-model="toggleLanguage" :class="toggleLanguage ? 'bg-gray-500' : 'bg-gray-500'"
             class="relative inline-flex h-8 w-14 items-center rounded-full shadow-[inset_2px_2px_3px_0_rgba(0,0,0,.3)]"
             @click="toggleLanguage ? locale = 'en-US' : locale = 'zh-TW'">

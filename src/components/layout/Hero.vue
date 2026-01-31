@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, defineProps, inject } from 'vue';
-import Button from '../ui/button/Button.vue';
+import { Button } from '@/components/ui/button';
 import deskImg from '@/assets/desk.jpg';
 const lightingSection = ref<HTMLElement | null>(null);
 const lightPosition = ref<{ x: string, y: string }>({ x: '0px', y: '0px' });

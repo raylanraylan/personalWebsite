@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import Card from '../ui/card/Card.vue';
-import CardHeader from '../ui/card/CardHeader.vue';
-import CardTitle from '../ui/card/CardTitle.vue';
-import CardContent from '../ui/card/CardContent.vue';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from '@/components/ui/card'
 import { useI18n } from 'vue-i18n';
 
 const { tm } = useI18n();

@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from '@headlessui/vue'
 import { useI18n } from 'vue-i18n';
-import Button from '../ui/button/Button.vue';
+import { Button } from '../ui/button/';
 
 const { tm, locale } = useI18n();
 const isOpen = ref(false);

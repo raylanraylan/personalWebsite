@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, defineEmits } from 'vue';
+import { ref, onMounted, defineEmits, watch } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch } from '@headlessui/vue';
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/solid';
 import { useI18n } from 'vue-i18n'
@@ -7,14 +7,25 @@ import { Slider } from '../ui/slider'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from 'reka-ui';
 import { Volume2, VolumeOff } from 'lucide-vue-next';
 import { playAmbientNoise, stopAmbientNoise } from '@/composables/useAmbientSound';
-
 const { locale } = useI18n({ useScope: 'global' })
+
 const emit = defineEmits<{
-  heightSize: [size: number],
-  addStarMapRender: [star: object]
+  isEnableSound: [isEnable: boolean]
+  volume: [volume: number]
 }>()
 
 const sliderValue = ref<number[]>([0]);
+
+watch(sliderValue, (newVal) => {
+  if (newVal[0] > 0) {
+    playAmbientNoise(newVal[0]);
+  } else {
+    stopAmbientNoise();
+  }
+  emit('isEnableSound', newVal[0] > 0);
+  emit('volume', newVal[0]);
+})
+
 const toggleLanguage = ref<boolean>(false);
 const isToggleDark = ref<boolean>(true);
 const logoName = ref('logo_name');
@@ -88,17 +99,16 @@ document.addEventListener('scroll', () => {
         <div class="flex gap-3 flex-1 items-center justify-end">
           <div class="flex gap-2 items-center">
             <div>
-              <Volume2 v-if="sliderValue[0] > 0" @click="sliderValue = [0]; stopAmbientNoise();"
-                class="cursor-pointer" />
-              <VolumeOff v-else @click="sliderValue = [100]; playAmbientNoise(sliderValue[0])" class="cursor-pointer" />
+              <Volume2 v-if="sliderValue[0] > 0" @click="sliderValue = [0]" class="cursor-pointer" />
+              <VolumeOff v-else @click="sliderValue = [100]" class="cursor-pointer" />
             </div>
-            <!-- <SliderRoot v-model="sliderValue" class="relative flex items-center w-full h-2" :default-value="[50]"
+            <SliderRoot v-model="sliderValue" class="relative flex items-center w-full h-2" :default-value="[50]"
               orientation="horizontal">
               <SliderTrack class="relative header-underline-border w-[100px] h-2 rounded-full">
                 <SliderRange class="absolute bg-paper" />
               </SliderTrack>
               <SliderThumb class="block w-4 h-4 rounded-full header-underline-border" />
-            </SliderRoot> -->
+            </SliderRoot>
           </div>
           <Switch v-model="toggleLanguage" :class="toggleLanguage ? 'bg-gray-500' : 'bg-gray-500'"
             class="relative inline-flex h-8 w-14 items-center rounded-full shadow-[inset_2px_2px_3px_0_rgba(0,0,0,.3)]"

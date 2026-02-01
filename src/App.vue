@@ -40,6 +40,16 @@ function hideLoading() {
   }, 500)
 }
 
+const isEnableSound = ref(false);
+const handleEnableSound = (val: boolean) => {
+  isEnableSound.value = val;
+}
+
+const volume = ref<number>(0);
+const handleVolume = (val: number) => {
+  volume.value = val;
+}
+
 onBeforeMount(() => {
   isToggleDark.value = localStorage.getItem('darkMode') === "true" ? true : false
   updateTheme();
@@ -53,17 +63,17 @@ onBeforeMount(() => {
     <p class="text-gray-900 dark:text-white text-4xl text-center">{{ process }}%</p>
   </div> -->
   <!-- <div v-else> -->
-  
-    <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full z-50">
-      <Header/>
-    </header>
-    <!-- <main v-show="isShowContent"> -->
-    <main class="relative">
-      <RouterView />
-    </main>
-    <footer v-if="route.name !== 'notFound'">
-      <Footer />
-    </footer>
+
+  <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full z-50">
+    <Header @isEnableSound="handleEnableSound" @volume="handleVolume" />
+  </header>
+  <!-- <main v-show="isShowContent"> -->
+  <main class="relative">
+    <RouterView :isEnableSound="isEnableSound" :volume="volume" />
+  </main>
+  <footer v-if="route.name !== 'notFound'">
+    <Footer />
+  </footer>
   <!-- </div> -->
 </template>
 

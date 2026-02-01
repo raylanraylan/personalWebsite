@@ -5,8 +5,14 @@ import CardTitle from '../ui/card/CardTitle.vue';
 import CardDescription from '../ui/card/CardDescription.vue';
 import CardContent from '../ui/card/CardContent.vue';
 import { useI18n } from 'vue-i18n';
+import { triggerHoverSound } from '@/composables/useAmbientSound';
 
 const { tm } = useI18n();
+
+defineProps<{
+  isEnableSound: boolean;
+  volume: number;
+}>();
 
 </script>
 <template>
@@ -27,6 +33,7 @@ const { tm } = useI18n();
         <CardContent class="p-4 sm:p-6">
           <ul class="flex flex-wrap gap-3">
             <li v-for="(item, itemIndex) in skill.items" :key="item"
+              @mouseenter="triggerHoverSound(isEnableSound, volume)"
               class="w-fit px-3 py-1 border border-base text-xs sm:text-base text-muted bg-surface hover:text-primary hover:bg-elevated hover:transition-colors hover:cursor-default">
               <a v-if="skill.urls[itemIndex]" :href="skill.urls[itemIndex]" target="_blank" rel="noopener noreferrer">{{
                 item }}</a>
@@ -36,6 +43,6 @@ const { tm } = useI18n();
         </CardContent>
       </Card>
     </div>
-    <p class="text-center text-xs sm:text-sm text-gray-500">{{ $t('skills.description') }}</p>
+    <p class=" text-center text-xs sm:text-sm text-gray-500">{{ $t('skills.description') }}</p>
   </section>
 </template>

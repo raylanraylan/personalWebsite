@@ -19,13 +19,18 @@ function generateFileNumber(year: number): string {
 
 const thisYear = new Date().getFullYear();
 const fileNumber = ref<string>(generateFileNumber(thisYear));
+
+defineProps<{
+  isEnableSound: boolean;
+  volume: number;
+}>();
 </script>
 
 <template>
-  <Hero id="hero" :fileNumber="fileNumber"/>
-  <About id="profile" :fileNumber="fileNumber"/>
-  <Skill id="arseanal"/>
-  <Experience id="timeline"/>
-  <SideProjects id="cases"/>
-  <Contact id="contact"/>
+  <Hero id="hero" :fileNumber="fileNumber" />
+  <About id="profile" :fileNumber="fileNumber" />
+  <Skill id="arseanal" :isEnableSound="isEnableSound" :volume="volume" />
+  <Experience id="timeline" />
+  <SideProjects id="cases" :isEnableSound="isEnableSound" :volume="volume" />
+  <Contact id="contact" />
 </template>

@@ -1,5 +1,7 @@
 import { ref } from 'vue';
 let audio = ref<AudioContext | null>(null);
+let ambientSource: AudioBufferSourceNode | null = null;
+let ambientGain: GainNode | null = null;
 
 const getAudio = () => {
   if (!audio.value){
@@ -8,6 +10,7 @@ const getAudio = () => {
   return audio.value;
 }
 
+// 環境聲音
 const createAmbientNoise = (volume: number)=>{
   const ctx = getAudio();
   if (ctx.state !== 'running') return null;
@@ -26,24 +29,80 @@ const createAmbientNoise = (volume: number)=>{
   return buffer;
 }
 
-export const playAmbientNoise =  (volume: number = 0.02) =>{
+export const playAmbientNoise =  (volume: number = 2) =>{
   const ctx = getAudio();
-  if (ctx.state !== 'running') return null;
 
-  const buffer = createAmbientNoise(volume);
-  if (!buffer) return null;
+  // Normalize volume (0-100 -> 0-1)
+  const normalizedVolume = Math.min(Math.max(volume / 100, 0), 1);
 
-  const source = ctx.createBufferSource();
-  source.buffer = buffer;
-  source.connect(ctx.destination);
-  source.loop = true;
-  source.start();
+  if (!ambientGain) {
+    ambientGain = ctx.createGain();
+    ambientGain.connect(ctx.destination);
+  }
+
+  // Update volume smoothly
+  ambientGain.gain.setTargetAtTime(normalizedVolume, ctx.currentTime, 0.1);
+
+  if (!ambientSource) {
+    const buffer = createAmbientNoise(volume);
+    if (!buffer) return null;
+
+    ambientSource = ctx.createBufferSource();
+    ambientSource.buffer = buffer;
+    ambientSource.connect(ambientGain);
+    ambientSource.loop = true;
+    ambientSource.start();
+  }
 }
 
 export const stopAmbientNoise = () => {
+  if (ambientGain) {
+    const ctx = getAudio();
+    // Fade out
+    ambientGain.gain.setTargetAtTime(0, ctx.currentTime, 0.1);
+    
+    setTimeout(() => {
+      if (ambientSource) {
+        ambientSource.stop();
+        ambientSource.disconnect();
+        ambientSource = null;
+      }
+      if (ambientGain) {
+        ambientGain.disconnect();
+        ambientGain = null;
+      }
+    }, 200);
+  }
+}
+
+// hover sound
+const createHoverSound = (volume: number) => {
   const ctx = getAudio();
   if (ctx.state !== 'running') return;
 
-  ctx.close();
-  audio.value = null;
+  const now = ctx.currentTime;
+
+  const oscillator = ctx.createOscillator();
+  oscillator.type = 'sine';
+  oscillator.frequency.setValueAtTime(800 + Math.random() * 200, now);
+  oscillator.frequency.exponentialRampToValueAtTime(400, now + 0.03);
+  const gainNode = ctx.createGain();
+  gainNode.gain.setValueAtTime(volume, now);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+
+  oscillator.connect(gainNode);
+  gainNode.connect(ctx.destination);
+
+  oscillator.start(now);
+  oscillator.stop(now + 0.04);
+}
+
+const playHoverSound = (volume: number = 0.02) => {
+  createHoverSound(volume);
+}
+
+export const triggerHoverSound = (isEnable: boolean,volume:number) => {
+  if (!isEnable) return;
+  const volumeValue = Math.min(Math.max(volume / 100, 0), 1);
+  playHoverSound(volumeValue);
 }

@@ -20,6 +20,7 @@ defineProps<{
     <h2 class="text-center text-xl sm:text-3xl mb-3 sm:mb-10 text-on-surface">{{ $t('skills.title') }}</h2>
     <div class="grid grid-cols-1 gap-y-5 mb-3 sm:gap-5 sm:grid-cols-2 sm:mb-10 lg:grid-cols-6 lg:gap-5">
       <Card class="border-base bg-primary hover:border-spotlight-yellow relative"
+        @mouseenter="triggerHoverSound(isEnableSound, volume)"
         :class="Number(index) > 2 ? 'lg:col-span-3' : 'lg:col-span-2'" v-for="(skill, index) in tm('skills.items')"
         :key="index">
         <CardHeader class="p-4 sm:p-6">

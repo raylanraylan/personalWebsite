@@ -42,7 +42,6 @@ export const playAmbientNoise =  (volume: number = 2) =>{
 
   // Update volume smoothly
   ambientGain.gain.setTargetAtTime(normalizedVolume, ctx.currentTime, 0.1);
-
   if (!ambientSource) {
     const buffer = createAmbientNoise(volume);
     if (!buffer) return null;
@@ -105,4 +104,106 @@ export const triggerHoverSound = (isEnable: boolean,volume:number) => {
   if (!isEnable) return;
   const volumeValue = Math.min(Math.max(volume / 100, 0), 1);
   playHoverSound(volumeValue);
+}
+
+const createButtonSound = (volume:number)=>{
+ const ctx = getAudio();
+  if (ctx.state !== 'running') return;
+  
+  const now = ctx.currentTime;
+
+  // Two-part click: down and up
+  const bufferSize = ctx.sampleRate * 0.08;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < bufferSize; i++) {
+    const t = i / ctx.sampleRate;
+    // First click at start
+    const click1 = t < 0.015 ? Math.exp(-t * 200) * (Math.random() * 2 - 1) : 0;
+    // Second softer click
+    const click2 = t > 0.04 && t < 0.06 ? Math.exp(-(t - 0.04) * 300) * (Math.random() * 2 - 1) * 0.5 : 0;
+    data[i] = (click1 + click2) * 0.8;
+  }
+
+  const source = ctx.createBufferSource();
+  source.buffer = buffer;
+
+  const filter = ctx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = 1500;
+  filter.Q.value = 2;
+
+  const gainNode = ctx.createGain();
+  gainNode.gain.value = volume;
+
+  source.connect(filter);
+  filter.connect(gainNode);
+  gainNode.connect(ctx.destination);
+
+  source.start(now);
+  source.stop(now + 0.08);
+}
+
+const playButtonSound = (volume: number = 0.02) => {
+  createButtonSound(volume);
+}
+
+export const triggerButtonSound = (isEnable: boolean,volume:number) => {
+  if (!isEnable) return;
+  const volumeValue = Math.min(Math.max(volume / 100, 0), 1);
+  playButtonSound(volumeValue);
+}
+
+const createPaperRustle = (volume: number = 0.15) => {
+  const ctx = getAudio();
+  if (ctx.state !== 'running') return;
+  
+  const now = ctx.currentTime;
+  const duration = 0.3 + Math.random() * 0.2;
+
+  const bufferSize = ctx.sampleRate * duration;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < bufferSize; i++) {
+    const progress = i / bufferSize;
+    // Envelope with multiple peaks for rustling effect
+    const envelope = Math.sin(progress * Math.PI) * 
+      (1 + 0.5 * Math.sin(progress * Math.PI * 8));
+    data[i] = (Math.random() * 2 - 1) * envelope * 0.5;
+  }
+
+  const source = ctx.createBufferSource();
+  source.buffer = buffer;
+
+  // Highpass for paper-like sound
+  const highpass = ctx.createBiquadFilter();
+  highpass.type = 'highpass';
+  highpass.frequency.value = 800;
+
+  const lowpass = ctx.createBiquadFilter();
+  lowpass.type = 'lowpass';
+  lowpass.frequency.value = 4000;
+
+  const gainNode = ctx.createGain();
+  gainNode.gain.value = volume;
+
+  source.connect(highpass);
+  highpass.connect(lowpass);
+  lowpass.connect(gainNode);
+  gainNode.connect(ctx.destination);
+
+  source.start(now);
+  source.stop(now + duration);
+};
+
+const playPaperRustle = (volume: number = 0.15) => {
+  createPaperRustle(volume);
+}
+
+export const triggerPaperRustle = (isEnable: boolean,volume:number) => {
+  if (!isEnable) return;
+  const volumeValue = Math.min(Math.max(volume / 100, 0), 1);
+  playPaperRustle(volumeValue);
 }

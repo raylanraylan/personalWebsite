@@ -2,11 +2,14 @@
 import { ref, computed, defineProps, inject } from 'vue';
 import { Button } from '@/components/ui/button';
 import deskImg from '@/assets/desk.jpg';
+import { triggerButtonSound } from '@/composables/useAmbientSound';
 const lightingSection = ref<HTMLElement | null>(null);
 const lightPosition = ref<{ x: string, y: string }>({ x: '0px', y: '0px' });
 
 const props = defineProps<{
   fileNumber: string;
+  isEnableSound: boolean;
+  volume: number;
 }>();
 
 const mouseMoveHandler = (e: MouseEvent) => {
@@ -35,7 +38,9 @@ document.addEventListener('mousemove', mouseMoveHandler)
         <h2 class="mt-5 text-[1rem] text-primary sm:text-[3rem] leading-tight">{{ $t("hero.fileType") }}</h2>
         <p class="mb-10 text-xs sm:text-base text-paper-muted">{{ $t("hero.fileDescription") }}</p>
         <Button class="mb-3 bg-muted text-brand-highlight hover:shadow-glow">
-          <a :href="quickOpen">{{ $t("hero.quickOpen") }}</a>
+          <a @mouseenter="triggerButtonSound(props.isEnableSound, props.volume)" :href="quickOpen">{{
+            $t("hero.quickOpen")
+            }}</a>
         </Button>
       </div>
       <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-xs sm:text-base">{{

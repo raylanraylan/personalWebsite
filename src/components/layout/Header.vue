@@ -107,11 +107,11 @@ document.addEventListener('scroll', () => {
               <SliderTrack class="relative header-underline-border w-[100px] h-2 rounded-full">
                 <SliderRange class="absolute bg-paper" />
               </SliderTrack>
-              <SliderThumb class="block w-4 h-4 rounded-full header-underline-border" />
+              <SliderThumb class="block w-4 h-4 rounded-full header-underline-border cursor-pointer" />
             </SliderRoot>
           </div>
           <Switch v-model="toggleLanguage" :class="toggleLanguage ? 'bg-gray-500' : 'bg-gray-500'"
-            class="relative inline-flex h-8 w-14 items-center rounded-full shadow-[inset_2px_2px_3px_0_rgba(0,0,0,.3)]"
+            class="relative inline-flex h-8 w-14 items-center rounded-full shadow-[inset_2px_2px_3px_0_rgba(0,0,0,.3)] cursor-pointer"
             @click="toggleLanguage ? locale = 'en-US' : locale = 'zh-TW'">
             <span class="sr-only">Enable notifications</span>
             <span :class="toggleLanguage ? 'translate-x-8' : 'translate-x-1'"
@@ -123,7 +123,8 @@ document.addEventListener('scroll', () => {
           </Switch>
           <Switch :value="String(isToggleDark)"
             :class="isToggleDark ? 'bg-gray-100 drop-shadow-lg' : 'bg-amber-400 shadow-[inset_2px_2px_3px_0_rgba(200,70,40,0.7)]'"
-            class="relative inline-flex justify-center h-8 w-8 items-center rounded-full" @click="toggleColor">
+            class="relative inline-flex justify-center h-8 w-8 items-center rounded-full cursor-pointer"
+            @click="toggleColor">
             <span class="sr-only">Enable notifications</span>
             <MoonIcon v-show="isToggleDark" class="size-4 text-grey-500"></MoonIcon>
             <SunIcon v-show="!isToggleDark" class="size-5 text-grey-500"></SunIcon>

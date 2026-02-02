@@ -27,10 +27,10 @@ defineProps<{
 </script>
 
 <template>
-  <Hero id="hero" :fileNumber="fileNumber" />
+  <Hero id="hero" :fileNumber="fileNumber" :isEnableSound="isEnableSound" :volume="volume" />
   <About id="profile" :fileNumber="fileNumber" />
   <Skill id="arseanal" :isEnableSound="isEnableSound" :volume="volume" />
   <Experience id="timeline" />
   <SideProjects id="cases" :isEnableSound="isEnableSound" :volume="volume" />
-  <Contact id="contact" />
+  <Contact id="contact" :isEnableSound="isEnableSound" :volume="volume" />
 </template>

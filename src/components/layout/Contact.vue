@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, defineProps } from 'vue'
 import {
   TransitionRoot,
   TransitionChild,
@@ -9,7 +9,18 @@ import {
 } from '@headlessui/vue'
 import { useI18n } from 'vue-i18n';
 import { Button } from '../ui/button/';
+import { triggerButtonSound } from '@/composables/useAmbientSound';
 
+const props = defineProps({
+  isEnableSound: {
+    type: Boolean,
+    default: true
+  },
+  volume: {
+    type: Number,
+    default: 100
+  }
+})
 const { tm, locale } = useI18n();
 const isOpen = ref(false);
 
@@ -101,7 +112,7 @@ async function submitData(e: Event) {
               <div class="mt-4 flex justify-center">
                 <button type="button"
                   class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-primary dark:text-white"
-                  @click="closeModal">
+                  @click="closeModal" @mouseenter="triggerButtonSound(props.isEnableSound, props.volume)">
                   {{ $t('contact.submitResult.close') }}
                 </button>
               </div>
@@ -122,7 +133,7 @@ async function submitData(e: Event) {
               <div class="mt-4 flex justify-center">
                 <button type="button"
                   class="rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-amber-400 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-primary dark:text-white"
-                  @click="closeModal">
+                  @click="closeModal" @mouseenter="triggerButtonSound(props.isEnableSound, props.volume)">
                   {{ $t('contact.submitResult.close') }}
                 </button>
               </div>
@@ -200,7 +211,10 @@ async function submitData(e: Event) {
           <!-- <button class="flex items-center justify-center gap-x-6 mx-auto rounded-md px-3.5 py-2.5 text-sm font-semibold text-inverse" type="submit" :disable="isOpen">{{ $t("contact.sendForm") }}</button> -->
           <Button class="flex items-center justify-center mx-auto"
             :class="isEmptyContent ? 'bg-gray-300 text-gray-600 hover:bg-gray-300 hover:text-gray-600 hover:cursor-not-allowed' : 'bg-brand-highlight text-inverse hover:shadow-glow hover:cursor-pointer'"
-            type="submit" :disable="isOpen || isEmptyContent">{{ $t("contact.sendForm") }}</Button>
+            type="submit" :disable="isOpen || isEmptyContent"
+            @mouseenter="isEmptyContent ? null : triggerButtonSound(props.isEnableSound, props.volume)">{{
+              $t("contact.sendForm")
+            }}</Button>
         </div>
       </form>
     </div>

@@ -21,7 +21,43 @@ const mouseMoveHandler = (e: MouseEvent) => {
 }
 
 const quickOpen = ref<string>('#profile');
-document.addEventListener('mousemove', mouseMoveHandler)
+// document.addEventListener('mousemove', mouseMoveHandler)
+
+import { useI18n } from 'vue-i18n';
+import { onMounted } from 'vue';
+const { t } = useI18n();
+
+const displayedText = ref('');
+const isHighlight = ref(false);
+
+const typeWriter = async () => {
+  const fullText = t("hero.fileType");
+  displayedText.value = '';
+  isHighlight.value = false;
+
+  // Typing
+  for (let i = 0; i <= fullText.length; i++) {
+    displayedText.value = fullText.slice(0, i);
+    await new Promise(resolve => setTimeout(resolve, 150));
+  }
+
+  // Find Highlight
+  await new Promise(resolve => setTimeout(resolve, 200));
+  isHighlight.value = true;
+
+  // Wait and Clear
+  await new Promise(resolve => setTimeout(resolve, 800));
+  displayedText.value = '';
+  isHighlight.value = false;
+
+  // Repeat
+  typeWriter();
+}
+
+onMounted(() => {
+  document.addEventListener('mousemove', mouseMoveHandler);
+  typeWriter();
+})
 </script>
 
 <template>
@@ -35,7 +71,10 @@ document.addEventListener('mousemove', mouseMoveHandler)
     <div class="px-[5vw] pt-32 pb-20 max-w-4xl mx-auto flex flex-col relative z-10 text-center">
       <div>
         <h1 class="text-xs sm:text-base text-brand-highlight">{{ props.fileNumber }}</h1>
-        <h2 class="mt-5 text-[1rem] text-primary sm:text-[3rem] leading-tight">{{ $t("hero.fileType") }}</h2>
+        <h2 class="mt-5 text-[1rem] text-primary sm:text-[3rem] leading-tight">
+          <span :class="{ 'bg-[#3b82f6] text-inverse': isHighlight }">{{ displayedText }}</span>
+          <span>_</span>
+        </h2>
         <p class="mb-10 text-xs sm:text-base text-paper-muted">{{ $t("hero.fileDescription") }}</p>
         <Button class="mb-3 bg-muted text-brand-highlight hover:shadow-glow">
           <a @mouseenter="triggerButtonSound(props.isEnableSound, props.volume)" :href="quickOpen">{{

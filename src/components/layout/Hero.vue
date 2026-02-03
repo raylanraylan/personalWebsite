@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, computed, defineProps, inject } from 'vue';
+import { ref, computed, defineProps, inject, watch } from 'vue';
 import { Button } from '@/components/ui/button';
 import deskImg from '@/assets/desk.jpg';
-import { triggerButtonSound } from '@/composables/useAmbientSound';
+import { triggerButtonSound, triggerTypewriterSound } from '@/composables/useAmbientSound';
 const lightingSection = ref<HTMLElement | null>(null);
 const lightPosition = ref<{ x: string, y: string }>({ x: '0px', y: '0px' });
 
@@ -21,7 +21,6 @@ const mouseMoveHandler = (e: MouseEvent) => {
 }
 
 const quickOpen = ref<string>('#profile');
-// document.addEventListener('mousemove', mouseMoveHandler)
 
 import { useI18n } from 'vue-i18n';
 import { onMounted } from 'vue';
@@ -38,6 +37,9 @@ const typeWriter = async () => {
   // Typing
   for (let i = 0; i <= fullText.length; i++) {
     displayedText.value = fullText.slice(0, i);
+    if (props.isEnableSound) {
+      triggerTypewriterSound(props.isEnableSound, props.volume);
+    }
     await new Promise(resolve => setTimeout(resolve, 150));
   }
 
@@ -47,6 +49,9 @@ const typeWriter = async () => {
 
   // Wait and Clear
   await new Promise(resolve => setTimeout(resolve, 800));
+  if (props.isEnableSound) {
+    triggerTypewriterSound(props.isEnableSound, props.volume);
+  }
   displayedText.value = '';
   isHighlight.value = false;
   await new Promise(resolve => setTimeout(resolve, 1500));
@@ -81,7 +86,7 @@ onMounted(() => {
         <Button class="mb-3 bg-muted text-brand-highlight hover:shadow-glow">
           <a @mouseenter="triggerButtonSound(props.isEnableSound, props.volume)" :href="quickOpen">{{
             $t("hero.quickOpen")
-            }}</a>
+          }}</a>
         </Button>
       </div>
       <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-xs sm:text-base">{{

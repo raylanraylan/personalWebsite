@@ -207,3 +207,51 @@ export const triggerPaperRustle = (isEnable: boolean,volume:number) => {
   const volumeValue = Math.min(Math.max(volume / 100, 0), 1);
   playPaperRustle(volumeValue);
 }
+
+export const createTypewriterSound = (volume: number = 0.15) => {
+  const ctx = getAudio();
+  if (ctx.state !== 'running') return;
+  
+  const now = ctx.currentTime;
+
+  // Create noise for the click
+  const bufferSize = ctx.sampleRate * 0.05;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < bufferSize; i++) {
+    // Sharp attack, quick decay
+    const envelope = Math.exp(-i / (bufferSize * 0.1));
+    data[i] = (Math.random() * 2 - 1) * envelope;
+  }
+
+  const source = ctx.createBufferSource();
+  source.buffer = buffer;
+
+  // Bandpass filter for mechanical sound
+  const filter = ctx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = 2000 + Math.random() * 1000;
+  filter.Q.value = 5;
+
+  const gainNode = ctx.createGain();
+  gainNode.gain.setValueAtTime(volume, now);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+  source.connect(filter);
+  filter.connect(gainNode);
+  gainNode.connect(ctx.destination);
+
+  source.start(now);
+  source.stop(now + 0.05);
+}
+
+const playTypewriterSound = (volume: number = 0.15) => {
+  createTypewriterSound(volume);
+}
+
+export const triggerTypewriterSound = (isEnable: boolean,volume:number) => {
+  if (!isEnable) return;
+  const volumeValue = Math.min(Math.max(volume / 100, 0), 1);
+  playTypewriterSound(volumeValue);
+}

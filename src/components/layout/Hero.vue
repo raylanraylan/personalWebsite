@@ -49,6 +49,8 @@ const typeWriter = async () => {
   await new Promise(resolve => setTimeout(resolve, 800));
   displayedText.value = '';
   isHighlight.value = false;
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
 
   // Repeat
   typeWriter();
@@ -73,7 +75,7 @@ onMounted(() => {
         <h1 class="text-xs sm:text-base text-brand-highlight">{{ props.fileNumber }}</h1>
         <h2 class="mt-5 text-[1rem] text-primary sm:text-[3rem] leading-tight">
           <span :class="{ 'bg-[#3b82f6] text-inverse': isHighlight }">{{ displayedText }}</span>
-          <span>_</span>
+          <span class="animate-underline">_</span>
         </h2>
         <p class="mb-10 text-xs sm:text-base text-paper-muted">{{ $t("hero.fileDescription") }}</p>
         <Button class="mb-3 bg-muted text-brand-highlight hover:shadow-glow">

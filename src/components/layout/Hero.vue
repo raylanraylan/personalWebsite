@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, defineProps, inject, watch } from 'vue';
 import { Button } from '@/components/ui/button';
-import deskImg from '@/assets/desk.jpg';
+import deskImg from '@/assets/images/desk.jpg';
 import { triggerButtonSound, triggerTypewriterSound } from '@/composables/useAmbientSound';
 const lightingSection = ref<HTMLElement | null>(null);
 const lightPosition = ref<{ x: string, y: string }>({ x: '0px', y: '0px' });
@@ -89,9 +89,9 @@ onMounted(() => {
           }}</a>
         </Button>
       </div>
-      <p class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-paper-muted text-xs sm:text-base">{{
-        $t("hero.useFile") }}
-      </p>
+      <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+        <p class="text-paper-muted text-xs sm:text-base">{{ $t("hero.useFile") }}</p>
+      </div>
     </div>
   </section>
 </template>

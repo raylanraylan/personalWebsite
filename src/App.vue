@@ -64,7 +64,7 @@ onBeforeMount(() => {
   </div> -->
   <!-- <div v-else> -->
 
-  <header v-if="route.name !== 'notFound'" class="fixed top-0 w-full z-50">
+  <header v-if="route.name !== 'notFound'">
     <Header @isEnableSound="handleEnableSound" @volume="handleVolume" />
   </header>
   <!-- <main v-show="isShowContent"> -->

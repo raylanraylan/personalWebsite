@@ -64,7 +64,7 @@ const isLg = breakpoints.greaterOrEqual('lg');
       class="bg-paper lg:bg-transparent bg-size-[100%_100%] h-auto bg-top sm:p-12 lg:px-30 py-20 relative lg:border-0 lg:bg-no-repeat">
       <CardHeader class="p-0">
         <h3
-          class="sm:text-5xl status-danger p-4 border-2 border-danger uppercase absolute right-[5%] top-[10%] rotate-25 text-shadow-sm text-shadow-red-500 mix-blend-color-burn filter-blur-sm">
+          class="sm:text-5xl status-danger p-4 border-2 border-danger uppercase absolute right-[5%] top-[200px] lg:top-[150px] rotate-25 text-shadow-sm text-shadow-red-500 mix-blend-color-burn filter-blur-sm">
           {{ $t('about.stamp') }}</h3>
         <CardTitle>
           <h2
@@ -76,7 +76,7 @@ const isLg = breakpoints.greaterOrEqual('lg');
             <div v-for="item in aboutItems" :key="item" class="lg:p-3 lg:border-b-2 lg:border-r-2 lg:border-gray-800"
               :class="item === 'name' ? 'sm:col-span-2' : ''">
               <h4 class="text-xs sm:text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{ $t('about.colon')
-              }}</h4>
+                }}</h4>
               <p class="text-sm sm:text-lg text-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
             </div>
           </div>

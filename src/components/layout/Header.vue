@@ -2,11 +2,12 @@
 import { ref, onMounted, defineEmits, watch } from 'vue';
 import { Disclosure, DisclosureButton, DisclosurePanel, Switch } from '@headlessui/vue';
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/solid';
-import { useI18n } from 'vue-i18n'
-import { Slider } from '../ui/slider'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from 'reka-ui';
 import { Volume2, VolumeOff } from 'lucide-vue-next';
 import { playAmbientNoise, stopAmbientNoise } from '@/composables/useAmbientSound';
+import { imgUrl } from '@/composables/useImgUrl';
+import { imgSize } from '@/composables/useImgAspectRatio';
+import { useI18n } from 'vue-i18n';
 const { locale } = useI18n({ useScope: 'global' })
 
 const emit = defineEmits<{
@@ -25,6 +26,11 @@ watch(sliderValue, (newVal) => {
   emit('isEnableSound', newVal[0] > 0);
   emit('volume', newVal[0]);
 })
+
+const memoPaper = imgUrl('/src/assets/images/memoPaper.webp');
+const memoPaperSize = ref<string>('auto');
+const redCircle = imgUrl('/src/assets/images/redCircle.webp');
+const redCircleSize = ref<string>('auto');
 
 const toggleLanguage = ref<boolean>(false);
 const isToggleDark = ref<boolean>(true);
@@ -53,9 +59,24 @@ const updateTheme = () => {
     document.documentElement.classList.remove('dark')
   }
 }
-onMounted(() => {
+
+// const desktopMenu = ref<HTMLElement | null>(null);
+// const desktopMenuHeight = ref<number>(0);
+// document.addEventListener('resize', () => {
+//   if (desktopMenu.value) {
+//     desktopMenuHeight.value = desktopMenu.value.offsetHeight;
+//   }
+// })
+
+onMounted(async () => {
   isToggleDark.value = localStorage.getItem('darkMode') === "true" ? true : false
   updateTheme();
+
+  await imgSize(memoPaper, memoPaperSize);
+
+  // if (desktopMenu.value) {
+  //   desktopMenuHeight.value = desktopMenu.value?.offsetHeight;
+  // }
 })
 
 const headerPosition = ref<number>(0);
@@ -66,14 +87,15 @@ document.addEventListener('scroll', () => {
   }
 })
 
+
 </script>
 
 <template>
   <Disclosure as="nav" v-slot="{ open }">
-    <div ref="headerContainer" class="mx-auto px-[5vw] py-5"
-      :class="headerPosition > 10 ? 'bg-primary' : 'bg-transparent'">
-      <div class="relative flex h-16 items-center justify-between">
-        <h1 class="flex flex-1 items-center">
+    <div ref="headerContainer" class="mx-auto px-[5vw] py-5 fixed top-0 w-full z-50 lg:w-auto lg:h-screen lg:p-0"
+      :class="headerPosition > 10 ? 'bg-primary lg:bg-transparent' : 'bg-transparent'">
+      <div class="relative flex h-16 items-center justify-between lg:flex-col lg:h-full">
+        <h1 class="p-3 lg:hidden">
           <a href="#hero">
             <span class="ml-2 font-medium text-lg text-primary">[{{ $t(logoName) }}]</span>
           </a>
@@ -86,17 +108,18 @@ document.addEventListener('scroll', () => {
           <span :class="open ? openMenu : closeMenu"></span>
         </DisclosureButton>
         <!-- Desktop menu -->
-        <div class="hidden sm:flex space-x-4 whitespace-nowrap">
-          <a v-for="item in navigation" :key="item.i18nName" :href="item.path"
-            class="p-2 text-sm text-paper duration-300 hover:text-primary after:w-0 after:transition-all after:content-[''] hover:after:w-full hover:after:h-px hover:after:header-underline-border hover:after:block hover:after:duration-700">{{
-              $t(item.i18nName) }}</a>
+        <div class="hidden sm:flex space-x-4 whitespace-nowrap lg:flex-col lg:relative lg:h-full" ref="desktopMenu">
+          <a v-for="(item, index) in navigation" :key="item.i18nName" :href="item.path"
+            class="p-2 text-sm text-paper duration-300 lg:relative lg:left-[-30px] lg:w-24 lg:block lg:bg-[url('@/assets/images/anchor.webp')] lg:bg-no-repeat lg:bg-top-right lg:bg-size-[300px] lg:p-0 lg:h-full lg:m-0 lg:mt-[-100px] lg:first:mt-0 hover:text-primary lg:hover:left-[-20px] lg:shadow-lg">
+            <span class="lg:relative lg:right-[-30px] lg:top-[80px] lg:rotate-90 lg:origin-center lg:block">{{
+              $t(item.i18nName) }}</span></a>
           <!-- <a class="flex gap-1 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-700 hover:text-white dark:text-white" href="https://raylanraylan.github.io/blog/" target="_blank">
               <span>{{ $t('blog_link') }}</span> -->
           <!-- <ArrowTopRightOnSquareIcon class="size-4"></ArrowTopRightOnSquareIcon> -->
           <!-- </a> -->
         </div>
         <!-- buttons -->
-        <div class="flex gap-3 flex-1 items-center justify-end">
+        <div class="flex gap-3 flex-1 items-center justify-end lg:hidden">
           <div class="flex gap-2 items-center">
             <div>
               <Volume2 v-if="sliderValue[0] > 0" @click="sliderValue = [0]" class="cursor-pointer" />
@@ -121,7 +144,7 @@ document.addEventListener('scroll', () => {
               <span class="text-sm" :class="toggleLanguage ? 'text-gray-500' : 'text-white'">EN</span>
             </div>
           </Switch>
-          <Switch :value="String(isToggleDark)"
+          <Switch v-model="isToggleDark"
             :class="isToggleDark ? 'bg-gray-100 drop-shadow-lg' : 'bg-amber-400 shadow-[inset_2px_2px_3px_0_rgba(200,70,40,0.7)]'"
             class="relative inline-flex justify-center h-8 w-8 items-center rounded-full cursor-pointer"
             @click="toggleColor">
@@ -133,9 +156,61 @@ document.addEventListener('scroll', () => {
       </div>
     </div>
 
-    <DisclosurePanel class="sm:hidden">
-      <div class="space-y-1 px-2 pb-3 pt-2 shadow-lg relative z-50 bg-paper">
-        <a v-for="item in navigation" :key="item.i18nName" :href="item.path"
+    <div
+      class="hidden lg:flex flex-col fixed top-[10px] right-[10px] z-50 bg-no-repeat bg-size-[100%_100%] px-5 py-8 gap-3"
+      :style="{ backgroundImage: `url(${memoPaper})`, aspectRatio: memoPaperSize }">
+      <h1 class="hover:underline rotate-[-2]">
+        <a href="#hero">
+          <span
+            class="ml-2 font-medium text-lg text-ink-black opacity-80 mix-blend-multiply text-shadow-xs font-serif">[{{
+              $t(logoName) }}]</span>
+        </a>
+      </h1>
+      <div class="rotate-[-2] flex flex-col gap-2">
+        <div class="flex gap-3 items-center">
+          <div>
+            <Volume2 v-if="sliderValue[0] > 0" @click="sliderValue = [0]" class="cursor-pointer text-ink-black" />
+            <VolumeOff v-else @click="sliderValue = [100]" class="cursor-pointer text-ink-black" />
+          </div>
+          <SliderRoot v-model="sliderValue" class="relative flex items-center w-[60%] h-2" :default-value="[50]"
+            orientation="horizontal">
+            <SliderTrack class="relative w-[100px] h-2 rounded-full bg-primary">
+              <SliderRange class="absolute" />
+            </SliderTrack>
+            <SliderThumb class="block w-4 h-4 rounded-full cursor-pointer bg-primary border-2 border-strong" />
+          </SliderRoot>
+        </div>
+        <div class="flex gap-3 items-center">
+          <h2 class="text-sm mr-.5 text-ink-black block">語言：</h2>
+          <Switch v-model="toggleLanguage" class="relative flex justify-center gap-5 cursor-pointer"
+            @click="toggleLanguage ? locale = 'en-US' : locale = 'zh-TW'">
+            <span class="text-sm mr-.5 text-ink-black block">繁</span>
+            <span class="text-sm text-ink-black block">EN</span>
+            <div>
+              <img v-if="toggleLanguage" :src="redCircle" class="w-5 h-5 absolute top-0 left-0"></img>
+              <img v-else :src="redCircle" class="w-5 h-5 absolute top-2/12 left-6/12"></img>
+            </div>
+          </Switch>
+        </div>
+
+        <div>
+          <h2 class="text-sm mr-.5 text-ink-black block">切換主題色：</h2>
+          <Switch v-model="isToggleDark" @click="toggleColor" class="relative flex justify-center gap-5 cursor-pointer">
+            <SunIcon class="size-5 text-orange-500 block z-10" />
+            <MoonIcon class="size-4 text-gray-500 block z-10" />
+            <div>
+              <img v-if="isToggleDark" :src="redCircle" class="w-5 h-5 absolute top-2/12 left-6/12" />
+              <img v-else :src="redCircle" class="w-5 h-5 absolute top-0 left-0" />
+            </div>
+          </Switch>
+        </div>
+
+      </div>
+    </div>
+
+    <DisclosurePanel class="sm:hidden" v-slot="{ close }">
+      <div class="space-y-1 px-2 pb-3 pt-3 shadow-2xl w-full fixed top-30 z-50 bg-paper">
+        <a v-for="item in navigation" :key="item.i18nName" :href="item.path" @click="close()"
           class="block rounded-md px-3 py-2 text-base font-medium text-inverse hover:bg-surface hover:text-paper">
           {{ $t(item.i18nName) }}
         </a>

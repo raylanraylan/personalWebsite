@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, type Ref } from 'vue';
+import { useBreakpoints, breakpointsTailwind } from '@vueuse/core';
 
 import Card from '../ui/card/Card.vue';
 import CardHeader from '../ui/card/CardHeader.vue';
@@ -52,11 +53,14 @@ const aboutItems = [
   'yearsOfExperience'
 ];
 
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const isLg = breakpoints.greaterOrEqual('lg');
+
 </script>
 <template>
   <section class="bg-[linear-gradient(180deg, hsl(0 0% 1% / 1), transparent)] relative">
     <h2 class="text-center text-xl mb-3 sm:text-3xl sm:mb-10 lg:hidden">{{ $t('profile_section') }}</h2>
-    <Card :style="{ aspectRatio: aspectRatio, backgroundImage: `url(${paperImgUrl})` }"
+    <Card :style="isLg ? { aspectRatio: aspectRatio, backgroundImage: `url(${paperImgUrl})` } : {}"
       class="bg-paper lg:bg-transparent bg-size-[100%_100%] h-auto bg-top sm:p-12 lg:px-30 py-20 relative lg:border-0 lg:bg-no-repeat">
       <CardHeader class="p-0">
         <h3
@@ -91,7 +95,7 @@ const aboutItems = [
         <span>{{ $t('about.footer.updated') }}{{ $t('about.colon') }}{{ updatedDate }}</span>
       </CardFooter>
     </Card>
-    <img :src="penImgUrl" class="absolute right-[20%] bottom-[10%] rotate-45" />
-    <img :src="cameraImgUrl" class="absolute left-0 bottom-0" />
+    <img :src="penImgUrl" class="hidden lg:block absolute right-[20%] bottom-[10%] rotate-45 w-[50px]" />
+    <img :src="cameraImgUrl" class="hidden lg:block absolute left-0 bottom-0 w-[600px]" />
   </section>
 </template>

@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue';
 import PersonalWebLogo from '@/assets/PersonalWebLogo.vue'
+import OpenWebLoading from '@/components/layout/OpenWebLoading.vue'
 
 const route = useRoute()
 const process = ref<number>(0);
@@ -31,7 +32,7 @@ function hideLoading() {
     process.value = 100;
     clearInterval(runProcess)
     clearTimeout(hideTime);
-    isLoading.value = false;
+    // isLoading.value = false; // Moved to @complete event from OpenWebLoading
   }, 700)
 
   const showFullProcess = setTimeout(() => {
@@ -53,7 +54,7 @@ const handleVolume = (val: number) => {
 onBeforeMount(() => {
   isToggleDark.value = localStorage.getItem('darkMode') === "true" ? true : false
   updateTheme();
-  hideLoading();
+  // hideLoading();
 })
 </script>
 
@@ -64,16 +65,18 @@ onBeforeMount(() => {
   </div> -->
   <!-- <div v-else> -->
 
-  <header v-if="route.name !== 'notFound'">
-    <Header @isEnableSound="handleEnableSound" @volume="handleVolume" />
-  </header>
-  <!-- <main v-show="isShowContent"> -->
-  <main class="relative">
-    <RouterView :isEnableSound="isEnableSound" :volume="volume" />
-  </main>
-  <footer v-if="route.name !== 'notFound'">
-    <Footer />
-  </footer>
+  <OpenWebLoading v-if="isLoading" @complete="isLoading = false" />
+  <div v-else>
+    <header v-if="route.name !== 'notFound'">
+      <Header @isEnableSound="handleEnableSound" @volume="handleVolume" />
+    </header>
+    <main class="relative">
+      <RouterView :isEnableSound="isEnableSound" :volume="volume" />
+    </main>
+    <footer v-if="route.name !== 'notFound'">
+      <Footer />
+    </footer>
+  </div>
   <!-- </div> -->
 </template>
 

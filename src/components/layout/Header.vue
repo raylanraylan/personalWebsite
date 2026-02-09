@@ -6,7 +6,7 @@ import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from 'reka-ui';
 import { Volume2, VolumeOff } from 'lucide-vue-next';
 import { playAmbientNoise, stopAmbientNoise } from '@/composables/useAmbientSound';
 import { imgUrl } from '@/composables/useImgUrl';
-import { imgSize } from '@/composables/useImgAspectRatio';
+import { imgAspectRatio } from '@/composables/useImgAspectRatio';
 import { useI18n } from 'vue-i18n';
 const { locale } = useI18n({ useScope: 'global' })
 
@@ -72,7 +72,7 @@ onMounted(async () => {
   isToggleDark.value = localStorage.getItem('darkMode') === "true" ? true : false
   updateTheme();
 
-  await imgSize(memoPaper, memoPaperSize);
+  await imgAspectRatio(memoPaper, memoPaperSize);
 
   // if (desktopMenu.value) {
   //   desktopMenuHeight.value = desktopMenu.value?.offsetHeight;

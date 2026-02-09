@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 
-export function imgSize(url: string, variable?: Ref<string>): Promise<void> {
+export function imgAspectRatio(url: string, variable?: Ref<string>): Promise<void> {
   return new Promise((resolve) => {
     const img = new Image();
     img.src = url;

@@ -279,13 +279,13 @@
     padding:20px 10px;
   }
 
-  @media (min-width: var(--breakpoint-md)) {
+  @media (min-width: 768px) {
     section {
       padding:40px 20px;
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     section {
       padding:80px 160px;
     }

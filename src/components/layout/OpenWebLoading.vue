@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { imgUrl } from '@/composables/useImgUrl';
 
 const emit = defineEmits<{
   (e: 'complete'): void
 }>();
+
+const fileFrontUrl = imgUrl('/src/assets/images/fileFront.webp');
+const fileBackUrl = imgUrl('/src/assets/images/fileBack.webp');
 
 const phase = ref<'stamp' | 'opening' | 'reveal' | 'done'>('stamp');
 const timers = ref<ReturnType<typeof setTimeout>[]>([]);
@@ -21,11 +25,12 @@ const folderFrontClasses = computed(() => [
 ]);
 
 const folderFrontStyle = computed(() => ({
-  background: 'linear-gradient(135deg, hsl(38 45% 65%) 0%, hsl(35 40% 55%) 100%)',
-  transformOrigin: 'bottom center',
+  backgroundImage: `url(${fileFrontUrl})`,
+  backgroundPosition: 'center',
+  transformOrigin: 'left center',
   transform: isOpeningOrReveal.value
-    ? 'perspective(1000px) rotateX(-85deg)'
-    : 'perspective(1000px) rotateX(0deg)',
+    ? 'perspective(1000px) rotateY(-85deg)'
+    : 'perspective(1000px) rotateY(0deg)',
   boxShadow: '0 10px 40px rgb(0 0 0 / 0.5)'
 }));
 
@@ -35,6 +40,7 @@ const contentsRevealClasses = computed(() => [
 ]);
 
 onMounted(() => {
+  // phase.value = 'opening';
   timers.value.push(setTimeout(() => (phase.value = 'opening'), 1200));
   timers.value.push(setTimeout(() => (phase.value = 'reveal'), 2200));
   timers.value.push(setTimeout(() => {
@@ -57,13 +63,12 @@ onUnmounted(() => {
     <!-- Case File -->
     <div class="relative">
       <!-- Manila Folder Back -->
-      <div class="absolute w-80 h-96 rounded-t-lg"
-        style="background: linear-gradient(135deg, hsl(38 40% 55%) 0%, hsl(35 35% 45%) 100%); transform: translateY(10px)" />
+      <div class="absolute w-80 h-96 rounded-t-lg" :style="{ backgroundImage: `url(${fileBackUrl})` }" />
 
       <!-- Manila Folder Front (Opening) -->
       <div :class="folderFrontClasses" :style="folderFrontStyle">
         <!-- Folder Tab -->
-        <div class="absolute -top-4 left-8 px-6 py-2 font-typewriter text-sm tracking-wider"
+        <div class="absolute top-4 left-8 px-6 py-2 font-typewriter text-sm tracking-wider"
           style="background: hsl(38 50% 72%); border-radius: 6px 6px 0 0; color: hsl(25 40% 25%)">
           CASE #2024
         </div>
@@ -78,7 +83,7 @@ onUnmounted(() => {
 
         <!-- Confidential Stamp -->
         <div
-          class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 font-typewriter text-2xl tracking-widest uppercase"
+          class="absolute top-1/2 left-3/4 -translate-x-1/2 -translate-y-1/2 font-typewriter text-2xl tracking-widest uppercase"
           :class="{ 'animate-stamp-in': phase === 'stamp' }"
           style="color: hsl(var(--brand-accent)); border: 4px solid hsl(var(--brand-accent)); padding: 8px 24px; transform: translate(-50%, -50%) rotate(-12deg); opacity: 0.9; text-shadow: 0 0 10px hsl(var(--brand-accent) / 0.5)">
           CLASSIFIED

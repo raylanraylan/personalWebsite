@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, type Ref } from 'vue';
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core';
+import { imgUrl } from '@/composables/useImgUrl';
+import { imgAspectRatio } from '@/composables/useImgAspectRatio';
 
 import Card from '../ui/card/Card.vue';
 import CardHeader from '../ui/card/CardHeader.vue';
@@ -13,16 +15,11 @@ const props = defineProps<{
   fileNumber: string;
 }>();
 
-function imgUrl(url: string) {
-  return new URL(url, import.meta.url).href
-}
-
 const paperImgUrl = imgUrl('/src/assets/images/paper.webp');
 const aspectRatio = ref('auto');
 const penImgUrl = imgUrl('/src/assets/images/pen.webp');
 const cameraImgUrl = imgUrl('/src/assets/images/camera.webp');
 
-// 這樣寫 await 才有意義
 function imgSize(url: string, variable?: Ref<string>): Promise<void> {
   return new Promise((resolve) => {
     const img = new Image();
@@ -31,16 +28,14 @@ function imgSize(url: string, variable?: Ref<string>): Promise<void> {
       if (variable) {
         variable.value = `${img.naturalWidth} / ${img.naturalHeight}`;
       }
-      resolve(); // 載入完成，結束 Promise
+      resolve();
     };
-    img.onerror = () => resolve(); // 失敗也要結束，避免 await 卡死
+    img.onerror = () => resolve();
   });
 }
 
 onMounted(async () => {
-  await imgSize(paperImgUrl, aspectRatio);
-  await imgSize(penImgUrl);
-  await imgSize(cameraImgUrl);
+  await imgAspectRatio(paperImgUrl, aspectRatio);
 });
 
 const updatedDate = '2026-01-15';
@@ -76,7 +71,7 @@ const isLg = breakpoints.greaterOrEqual('lg');
             <div v-for="item in aboutItems" :key="item" class="lg:p-3 lg:border-b-2 lg:border-r-2 lg:border-gray-800"
               :class="item === 'name' ? 'sm:col-span-2' : ''">
               <h4 class="text-xs sm:text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{ $t('about.colon')
-                }}</h4>
+              }}</h4>
               <p class="text-sm sm:text-lg text-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
             </div>
           </div>
@@ -95,7 +90,7 @@ const isLg = breakpoints.greaterOrEqual('lg');
         <span>{{ $t('about.footer.updated') }}{{ $t('about.colon') }}{{ updatedDate }}</span>
       </CardFooter>
     </Card>
-    <img :src="penImgUrl" class="hidden lg:block absolute right-[20%] bottom-[10%] rotate-45 w-[50px]" />
-    <img :src="cameraImgUrl" class="hidden lg:block absolute left-0 bottom-0 w-[600px]" />
+    <img :src="penImgUrl" class="hidden lg:block absolute right-[20%] bottom-[10%] rotate-45 w-[30px]" />
+    <img :src="cameraImgUrl" class="hidden lg:block absolute left-0 bottom-0 w-[300px]" />
   </section>
 </template>

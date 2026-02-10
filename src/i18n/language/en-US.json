@@ -6,6 +6,10 @@
   "contact_section":"InitiateContact",
   "logo_name":"Ray's file",
   "title": "Ray's file",
+  "header":{
+    "language":"Language",
+    "theme":"Theme"
+  },
   "hero": {
     "fileType":"The Confidential File.",
     "fileDescription":"Looking for a solution? The clues are all here.",

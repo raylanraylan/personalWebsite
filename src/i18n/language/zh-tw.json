@@ -6,6 +6,10 @@
   "contact_section":"發起交涉",
   "logo_name":"Ray的檔案",
   "title": "Ray's file",
+  "header":{
+    "language":"語言",
+    "theme":"主題色"
+  },
   "hero": {
     "fileType":"檔案類型：公開資料",
     "fileDescription":"正在尋找解決方案嗎？線索都在這裡。",

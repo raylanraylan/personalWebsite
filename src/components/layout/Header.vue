@@ -181,7 +181,7 @@ document.addEventListener('scroll', () => {
           </SliderRoot>
         </div>
         <div class="flex gap-3 items-center">
-          <h2 class="text-sm mr-.5 text-ink-black block">語言：</h2>
+          <h2 class="text-sm mr-.5 text-ink-black block">{{ $t('header.language') }}{{ $t('about.colon') }}</h2>
           <Switch v-model="toggleLanguage" class="relative flex justify-center gap-5 cursor-pointer"
             @click="toggleLanguage ? locale = 'en-US' : locale = 'zh-TW'">
             <span class="text-sm mr-.5 text-ink-black block">繁</span>
@@ -194,7 +194,7 @@ document.addEventListener('scroll', () => {
         </div>
 
         <div>
-          <h2 class="text-sm mr-.5 text-ink-black block">切換主題色：</h2>
+          <h2 class="text-sm mr-.5 text-ink-black block">{{ $t('header.theme') }}{{ $t('about.colon') }}</h2>
           <Switch v-model="isToggleDark" @click="toggleColor" class="relative flex justify-center gap-5 cursor-pointer">
             <SunIcon class="size-5 text-orange-500 block z-10" />
             <MoonIcon class="size-4 text-gray-500 block z-10" />

@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { imgUrl } from '@/composables/useImgUrl';
+import fileFrontUrl from '@/assets/images/fileFront.webp';
+import fileBackUrl from '@/assets/images/fileBack.webp';
 
 const emit = defineEmits<{
   (e: 'complete'): void
 }>();
 
-const fileFrontUrl = imgUrl('/src/assets/images/fileFront.webp');
-const fileBackUrl = imgUrl('/src/assets/images/fileBack.webp');
+// const fileFrontUrl = imgUrl('@/assets/images/fileFront.webp');
+// const fileBackUrl = imgUrl('@/assets/images/fileBack.webp');
 
 const phase = ref<'stamp' | 'opening' | 'reveal' | 'done'>('stamp');
 const timers = ref<ReturnType<typeof setTimeout>[]>([]);

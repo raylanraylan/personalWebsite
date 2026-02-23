@@ -9,6 +9,8 @@ import { imgUrl } from '@/composables/useImgUrl';
 import { imgAspectRatio } from '@/composables/useImgAspectRatio';
 import { useI18n } from 'vue-i18n';
 const { locale } = useI18n({ useScope: 'global' })
+import memoPaper from '@/assets/images/memoPaper.webp';
+import redCircle from '@/assets/images/redCircle.webp';
 
 const emit = defineEmits<{
   isEnableSound: [isEnable: boolean]
@@ -27,9 +29,7 @@ watch(sliderValue, (newVal) => {
   emit('volume', newVal[0]);
 })
 
-const memoPaper = imgUrl('/src/assets/images/memoPaper.webp');
 const memoPaperSize = ref<string>('auto');
-const redCircle = imgUrl('/src/assets/images/redCircle.webp');
 const redCircleSize = ref<string>('auto');
 
 const toggleLanguage = ref<boolean>(false);

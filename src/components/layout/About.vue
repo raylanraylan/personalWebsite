@@ -3,6 +3,9 @@ import { defineProps, ref, onMounted, type Ref } from 'vue';
 import { useBreakpoints, breakpointsTailwind } from '@vueuse/core';
 import { imgUrl } from '@/composables/useImgUrl';
 import { imgAspectRatio } from '@/composables/useImgAspectRatio';
+import paperImgUrl from '@/assets/images/paper.webp';
+import penImgUrl from '@/assets/images/pen.webp';
+import cameraImgUrl from '@/assets/images/camera.webp';
 
 import Card from '../ui/card/Card.vue';
 import CardHeader from '../ui/card/CardHeader.vue';
@@ -15,10 +18,10 @@ const props = defineProps<{
   fileNumber: string;
 }>();
 
-const paperImgUrl = imgUrl('/src/assets/images/paper.webp');
+// const paperImgUrl = imgUrl('/src/assets/images/paper.webp');
 const aspectRatio = ref('auto');
-const penImgUrl = imgUrl('/src/assets/images/pen.webp');
-const cameraImgUrl = imgUrl('/src/assets/images/camera.webp');
+// const penImgUrl = imgUrl('/src/assets/images/pen.webp');
+// const cameraImgUrl = imgUrl('/src/assets/images/camera.webp');
 
 function imgSize(url: string, variable?: Ref<string>): Promise<void> {
   return new Promise((resolve) => {
@@ -71,7 +74,7 @@ const isLg = breakpoints.greaterOrEqual('lg');
             <div v-for="item in aboutItems" :key="item" class="lg:p-3 lg:border-b-2 lg:border-r-2 lg:border-gray-800"
               :class="item === 'name' ? 'sm:col-span-2' : ''">
               <h4 class="text-xs sm:text-base text-gray-500">{{ $t(`about.items.${item}.title`) }}{{ $t('about.colon')
-                }}</h4>
+              }}</h4>
               <p class="text-sm sm:text-lg text-paper-label">{{ $t(`about.items.${item}.content`) }}</p>
             </div>
           </div>

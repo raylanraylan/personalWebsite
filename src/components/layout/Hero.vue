@@ -74,7 +74,7 @@ onMounted(() => {
       bg-[linear-gradient(180deg,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.85)_100%)]
       dark:bg-[radial-gradient(200px_at_var(--x)_var(--y),transparent_0%,rgba(0,0,0,0.85)_100%)]"
       :style="{ '--x': lightPosition.x, '--y': lightPosition.y }" />
-    <div class="absolute w-full h-full z-30"
+    <div class="absolute inset-0 h-full z-30"
       style="background:repeating-linear-gradient(0deg, transparent, transparent 1px, rgb(0, 0, 0) 1px, rgb(0, 0, 0) 2px)" />
     <div class="px-[5vw] pt-32 pb-20 max-w-4xl mx-auto flex flex-col relative z-10 text-center">
       <div>

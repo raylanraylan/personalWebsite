@@ -141,21 +141,32 @@
       "title": "Blog",
       "description": "A place to write personal reflections or records.",
       "yearRange":"2024 - 進行中",
-      "url":"https://raylanraylan.github.io/blog/"
+      "url":"https://raylanraylan.github.io/blog/",
+      "design":""
     },
     {
       "title": "Book Horizon",
       "description": "A website for book reviews and social interaction.",
       "yearRange":"2024 - 2025",        
-      "url":"https://book-horizon.com/"
+      "url":"https://book-horizon.com/",
+      "design":""
     },
     {
       "title": "ITHelp Keep Sharing Award 2023",
       "description": "Write a 30-day series of technical articles on the topic of JavaScript objects and the DOM.",
       "yearRange":"2023",        
-      "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507"
+      "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507",
+      "design":""
+    },
+    {
+      "title":"2023TheF2E-stage1",
+      "description":"Participated in the front-end ｀web development event organized by HexSchool, selecting one design from many to recreate within a short timeframe.",
+      "yearRange":"2023",
+      "url":"https://raylanraylan.github.io/2023_F2E_Week1/",
+      "design":"https://www.figma.com/design/GDvhrmKAtFgcHe5aVjBci0/2023TheF2E-%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5-%E7%AB%8B%E5%A7%94%E7%AB%B6%E9%81%B8%E5%AE%98%E7%B6%B2-UNA-?node-id=80-570&t=gtkHztd2wRQpt6Ic-0"
     }
   ],
+  "design":"Mockup",
     "view": "Click to view project"
   },
   "contact": {

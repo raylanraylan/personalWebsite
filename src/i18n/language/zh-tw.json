@@ -139,21 +139,32 @@
         "title": "部落格",
         "description": "近期開始撰寫部落格，主要會放上學習到的筆記、遇到難關的紀錄，未來會持續更新。",
         "yearRange":"2024 - 進行中",
-        "url":"https://raylanraylan.github.io/blog/"
+        "url":"https://raylanraylan.github.io/blog/",
+        "design":""
       },
       {
         "title":"書海藍圖",
         "description":"（開發兩次，皆因成員離開而停止開發。）書海藍圖是一個以書本評論為核心，結合社交互動功能的網站，目前已開發繁體中文介面的首頁。",
         "yearRange":"2024 - 2025",        
-        "url":"https://book-horizon.com/"
+        "url":"https://book-horizon.com/",
+        "design":""
       },
       {
         "title":"2023IThome鐵人賽",
         "description":"撰寫三十天的技術文章，主題為Javascript物件與DOM。",
         "yearRange":"2023",        
-        "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507"
+        "url":"https://ithelp.ithome.com.tw/users/20162664/ironman/6507",
+        "design":""
+      },
+      {
+        "title":"2023TheF2E-第一階段",
+        "description":"參與六角學院舉辦的前端網頁活動，從眾多設計稿中選出一組切版，並於短時間內還原設計稿細節。",
+        "yearRange":"2023",
+        "url":"https://raylanraylan.github.io/2023_F2E_Week1/",
+        "design":"https://www.figma.com/design/GDvhrmKAtFgcHe5aVjBci0/2023TheF2E-%E7%AC%AC%E4%B8%80%E9%9A%8E%E6%AE%B5-%E7%AB%8B%E5%A7%94%E7%AB%B6%E9%81%B8%E5%AE%98%E7%B6%B2-UNA-?node-id=80-570&t=gtkHztd2wRQpt6Ic-0"
       }
     ],
+    "design":"設計稿",
     "view":"點擊前往專案觀看"
   },
   "contact": {
